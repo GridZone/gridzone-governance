@@ -21,7 +21,7 @@ and install solc
 ## Installation
 Pull the repository from GitHub and install its dependencies. You will need [yarn](https://yarnpkg.com/lang/en/docs/install/) or [npm](https://docs.npmjs.com/cli/install) installed.
 
-    git clone https://github.com/GridZone/gridzone-governance
+    git clone https://github.com/GridZone/gridzone-governance.git
     cd gridzone-governance
     yarn install --lock-file
 
