@@ -1,0 +1,86 @@
+# Grid Zone
+
+We detail a few of the core contracts.
+
+<dl>
+  <dt>Zone</dt>
+  <dd>The Zone Token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
+</dl>
+
+<dl>
+  <dt>Governor Alpha</dt>
+  <dd>The administrator of the timelock contract. Holders of Zone token may create and vote on proposals which will be queued into the timelock.</dd>
+</dl>
+
+## Pre-installation
+
+    sudo apt install build-essential
+
+and install solc
+
+## Installation
+Pull the repository from GitHub and install its dependencies. You will need [yarn](https://yarnpkg.com/lang/en/docs/install/) or [npm](https://docs.npmjs.com/cli/install) installed.
+
+    git clone https://github.com/GridZone/gridzone-governance
+    cd gridzone-governance
+    yarn install --lock-file
+
+## Environment
+
+Create files storing private key and infura API key.
+
+    mkdir -p ~/.ethereum
+    echo $PRIVATE_KEY > ~/.ethereum/mainnet
+    echo $INFURA_API_URL > ~/.ethereum/mainnet-url
+
+* PRIVATE_KEY is the private key of deployer account 
+* INFURA_API_URL is the url of infura API. ex: https://infura.io/v3/XXXXX
+
+## Compile
+
+Compile the smart contracts.
+
+    npx saddle compile
+
+Fore more details of saddle, you can read [this page](https://github.com/compound-finance/saddle#cli).
+
+## Deploy and Verify contracts
+
+You can deploy contracts and verify with etherscan API key.
+
+### Zone token
+
+    npx saddle deploy -n mainnet Zone $OWNER $ACCOUNT
+    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS Zone $OWNER $ACCOUNT
+
+* OWNER is the address of Zone token owner.
+* ACCOUNT is the address to receive 20% of initial supply.
+* ETHSCAN_API_KEY is the API key of [etherscan.io](https://etherscan.io/).
+* DEPLOYED_ADDRESS is the address of deployed contract by above command - 'npx saddle deploy'.
+
+### Timelock
+
+    npx saddle deploy -n mainnet Timelock $TIMELOCK_ADMIN $DELAY
+    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS Timelock $TIMELOCK_ADMIN $DELAY
+
+* TIMELOCK_ADMIN is the admin account's address of Timelock contract. This address should be changed to GovernorAlpha contract address after GovernorAlpha contract deployed.
+* DELAY is the least amount of delay which the proposal can be executed after proposals is queued. Minimum delay is 2 days. This parameter is specified in seconds. ex: 172800.
+
+### GovernorAlpha
+
+    npx saddle deploy -n mainnet GovernorAlpha $TIMELOCK_CONTRACT $ZONE_CONTRACT $GOV_GUARDIAN
+    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS GovernorAlpha $TIMELOCK_CONTRACT $ZONE_CONTRACT $GOV_GUARDIAN
+
+* TIMELOCK_CONTRACT is the address of Timelock contract
+* ZONE_CONTRACT is the address of Zone token contract
+* GOV_GUARDIAN is the address of governance guardian. The guardian can cancel the any not executed proposal.
+
+### VoteBox
+
+    npx saddle deploy -n mainnet VoteBox $TIMELOCK_CONTRACT
+    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS VoteBox $TIMELOCK_CONTRACT
+
+## Change the Timelock admin as GovernorAlpha contract
+
+* execute setPendingAdmin of Timelock contract. The parameter is the address of GovernorAlpha contract. This function must be called by Timelock admin
+* execute __acceptAdmin of GovernorAlpha contract. This function must be called by GovernorAlpha guardian
