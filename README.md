@@ -1,15 +1,15 @@
-# Grid Zone
+# GridZone
 
 We detail a few of the core contracts.
 
 <dl>
   <dt>Zone</dt>
-  <dd>The Zone Token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
+  <dd>The GridZone token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
 </dl>
 
 <dl>
   <dt>Governor Alpha</dt>
-  <dd>The administrator of the timelock contract. Holders of Zone token may create and vote on proposals which will be queued into the timelock.</dd>
+  <dd>The administrator of the timelock contract. Holders of GridZone token may create and vote on proposals which will be queued into the timelock.</dd>
 </dl>
 
 ## Pre-installation
@@ -48,12 +48,12 @@ Fore more details of saddle, you can read [this page](https://github.com/compoun
 
 You can deploy contracts and verify with etherscan API key.
 
-### Zone token
+### GridZone token
 
     npx saddle deploy -n mainnet Zone $OWNER $ACCOUNT
     npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS Zone $OWNER $ACCOUNT
 
-* OWNER is the address of Zone token owner.
+* OWNER is the address of GridZone token owner.
 * ACCOUNT is the address to receive 20% of initial supply.
 * ETHSCAN_API_KEY is the API key of [etherscan.io](https://etherscan.io/).
 * DEPLOYED_ADDRESS is the address of deployed contract by above command - 'npx saddle deploy'.
@@ -72,7 +72,7 @@ You can deploy contracts and verify with etherscan API key.
     npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS GovernorAlpha $TIMELOCK_CONTRACT $ZONE_CONTRACT $GOV_GUARDIAN
 
 * TIMELOCK_CONTRACT is the address of Timelock contract
-* ZONE_CONTRACT is the address of Zone token contract
+* ZONE_CONTRACT is the address of GridZone token contract
 * GOV_GUARDIAN is the address of governance guardian. The guardian can cancel the any not executed proposal.
 
 ### VoteBox
