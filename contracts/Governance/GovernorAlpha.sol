@@ -8,12 +8,12 @@ contract GovernorAlpha {
     /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
     function quorumVotes() public view returns (uint) {
         return div256(comp.totalSupply(), 25);
-    } // 4% of Zone
+    } // 4% of ZONE
 
     /// @notice The number of votes required in order for a voter to become a proposer
     function proposalThreshold() public view returns (uint) {
         return div256(comp.totalSupply(), 100);
-     } // 1% of Zone
+     } // 1% of ZONE
 
     /// @notice The maximum number of actions that can be included in a proposal
     function proposalMaxOperations() public pure returns (uint) { return 10; } // 10 actions

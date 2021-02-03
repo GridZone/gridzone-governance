@@ -1,6 +1,6 @@
 pragma solidity ^0.5.16;
 
-import "../../../contracts/Governance/Zone.sol";
+import "../../../contracts/Governance/ZONE.sol";
 
 contract CompCertora is Comp {
     constructor(address grantor) Comp(grantor) public {}

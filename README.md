@@ -3,7 +3,7 @@
 We detail a few of the core contracts.
 
 <dl>
-  <dt>Zone</dt>
+  <dt>GridZone</dt>
   <dd>The GridZone token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
 </dl>
 
@@ -50,8 +50,8 @@ You can deploy contracts and verify with etherscan API key.
 
 ### GridZone token
 
-    npx saddle deploy -n mainnet Zone $OWNER $ACCOUNT
-    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS Zone $OWNER $ACCOUNT
+    npx saddle deploy -n mainnet ZONE $OWNER $ACCOUNT
+    npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS ZONE $OWNER $ACCOUNT
 
 * OWNER is the address of GridZone token owner.
 * ACCOUNT is the address to receive 20% of initial supply.

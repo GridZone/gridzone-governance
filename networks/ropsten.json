@@ -51,7 +51,7 @@
         "PriceFeed": "0xe23874df0276AdA49D58751E8d6E088581121f1B",
         "Comptroller": "0x72626a5d7D19C519e39040F9c92932F8C62f8873",
         "PriceFeedPoster": "0x83563ba7F1B093aae57Fe876f8D870f8a1508886",
-        "Zone": "0xC0fc895D6e86ce375B79B6B218b596037119531f",
+        "ZONE": "0xC0fc895D6e86ce375B79B6B218b596037119531f",
         "VoteBox": "0xDb78eb77F0c227ca340594B6628b037Bd2a6e0d5"
     },
     "Blocks": {

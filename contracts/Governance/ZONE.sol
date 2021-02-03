@@ -98,9 +98,9 @@ contract CompBase is Ownable {
     uint8 public constant decimals = 18;
 
     /// @notice Total number of tokens in circulation
-    uint256 private constant _ownerSupply  = 11200000e18; // 11.2 million Zone, 40%
-    uint256 private constant _supply  = 5600000e18; // 5.6 million Zone, 20%
-    uint256 private _totalSupply = _ownerSupply + _supply; // 16.8 million Zone, 60%
+    uint256 private constant _ownerSupply  = 11200000e18; // 11.2 million ZONE, 40%
+    uint256 private constant _supply  = 5600000e18; // 5.6 million ZONE, 20%
+    uint256 private _totalSupply = _ownerSupply + _supply; // 16.8 million ZONE, 60%
 
     /**
      * @dev Sets the value of the `cap`. This value is immutable, it can only be
@@ -152,11 +152,11 @@ contract CompBase is Ownable {
 
 
     /**
-     * @notice Construct a new Zone token
+     * @notice Construct a new GridZone token
      * @param account The initial account to grant all the tokens
      */
     constructor(address owner, address account) Ownable(owner) public {
-        require(owner != account, "Zone: You specified owner address as an input parameter");
+        require(owner != account, "ZONE: You specified owner address as an input parameter");
 
         balances[owner] = _ownerSupply;
         emit Transfer(address(0), owner, _ownerSupply);
@@ -200,8 +200,8 @@ contract CompBase is Ownable {
     }
 
     function _approve(address owner, address spender, uint256 amount) internal {
-        require(owner != address(0), "Zone: approve from the zero address");
-        require(spender != address(0), "Zone: approve to the zero address");
+        require(owner != address(0), "ZONE: approve from the zero address");
+        require(spender != address(0), "ZONE: approve to the zero address");
 
         allowances[owner][spender] = amount;
         emit Approval(owner, spender, amount);
@@ -271,9 +271,9 @@ contract CompBase is Ownable {
         bytes32 structHash = keccak256(abi.encode(DELEGATION_TYPEHASH, delegatee, nonce, expiry));
         bytes32 digest = keccak256(abi.encodePacked("\x19\x01", domainSeparator, structHash));
         address signatory = ecrecover(digest, v, r, s);
-        require(signatory != address(0), "Zone::delegateBySig: invalid signature");
-        require(nonce == nonces[signatory]++, "Zone::delegateBySig: invalid nonce");
-        require(now <= expiry, "Zone::delegateBySig: signature expired");
+        require(signatory != address(0), "ZONE::delegateBySig: invalid signature");
+        require(nonce == nonces[signatory]++, "ZONE::delegateBySig: invalid nonce");
+        require(now <= expiry, "ZONE::delegateBySig: signature expired");
         return _delegate(signatory, delegatee);
     }
 
@@ -295,7 +295,7 @@ contract CompBase is Ownable {
      * @return The number of votes the account had as of the given block
      */
     function getPriorVotes(address account, uint blockNumber) public view returns (uint256) {
-        require(blockNumber < block.number, "Zone::getPriorVotes: not yet determined");
+        require(blockNumber < block.number, "ZONE::getPriorVotes: not yet determined");
 
         uint32 nCheckpoints = numCheckpoints[account];
         if (nCheckpoints == 0) {
@@ -339,8 +339,8 @@ contract CompBase is Ownable {
     }
 
     function _transferTokens(address src, address dst, uint256 amount) internal {
-        require(src != address(0), "Zone::_transferTokens: cannot transfer from the zero address");
-        require(dst != address(0), "Zone::_transferTokens: cannot transfer to the zero address");
+        require(src != address(0), "ZONE::_transferTokens: cannot transfer from the zero address");
+        require(dst != address(0), "ZONE::_transferTokens: cannot transfer to the zero address");
 
         _beforeTokenTransfer(src, dst, amount);
 
@@ -370,7 +370,7 @@ contract CompBase is Ownable {
     }
 
     function _writeCheckpoint(address delegatee, uint32 nCheckpoints, uint256 oldVotes, uint256 newVotes) internal {
-      uint32 blockNumber = safe32(block.number, "Zone::_writeCheckpoint: block number exceeds 32 bits");
+      uint32 blockNumber = safe32(block.number, "ZONE::_writeCheckpoint: block number exceeds 32 bits");
 
       if (nCheckpoints > 0 && checkpoints[delegatee][nCheckpoints - 1].fromBlock == blockNumber) {
           checkpoints[delegatee][nCheckpoints - 1].votes = newVotes;
@@ -637,14 +637,14 @@ contract ERC20Burnable is CompBase {
      */
     function burnFrom(address account, uint256 amount) public {
         uint256 spenderAllowance = allowances[account][_msgSender()];
-        uint256 decreasedAllowance = spenderAllowance.sub(amount, "Zone::burnFrom: burn amount exceeds allowance");
+        uint256 decreasedAllowance = spenderAllowance.sub(amount, "ZONE::burnFrom: burn amount exceeds allowance");
 
         _approve(account, _msgSender(), decreasedAllowance);
         _burn(account, amount);
     }
 }
 
-contract Zone is CompBase, ERC20Burnable {
+contract ZONE is CompBase, ERC20Burnable {
     using SafeMath for uint256;
 
     // how many token units a buyer gets per wei
