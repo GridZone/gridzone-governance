@@ -110,7 +110,7 @@ module.exports = {
       providers: [
         {env: "PROVIDER"},
         {file: "~/.ethereum/ropsten-url"},                    // Load from given file with contents as the URL (e.g. https://infura.io/api-key)
-        {http: "https://ropsten-eth.compound.finance"}
+        {http: "http://ropsten.infura.io"}
       ],
       web3: {
         gas: [
@@ -187,16 +187,16 @@ module.exports = {
       providers: [
         {env: "PROVIDER"},
         {file: "~/.ethereum/mainnet-url"},                    // Load from given file with contents as the URL (e.g. https://infura.io/api-key)
-        {http: "https://mainnet-eth.compound.finance"}
+        {http: "http://mainnet.infura.io"}
       ],
       web3: {
         gas: [
           {env: "GAS"},
-          {default: "6000000"}
+          {default: "23000"}
         ],
         gas_price: [
           {env: "GAS_PRICE"},
-          {default: "45000000000"}
+          {default: "220000000000"}
         ],
         options: {
           transactionConfirmationBlocks: 1,
