@@ -192,11 +192,11 @@ module.exports = {
       web3: {
         gas: [
           {env: "GAS"},
-          {default: "23000"}
+          {default: "6700000"}
         ],
         gas_price: [
           {env: "GAS_PRICE"},
-          {default: "220000000000"}
+          {default: "188000000000"}
         ],
         options: {
           transactionConfirmationBlocks: 1,
