@@ -25,6 +25,24 @@ Pull the repository from GitHub and install its dependencies. You will need [yar
     cd gridzone-governance
     yarn install --lock-file
 
+Patch node_modules/eth-saddle/dist/contract.js to set the estimated gas limit and price when deploy contracts.
+
+	+++ dist/contract.js	2021-02-06 18:46:22.800146768 +0800
+	@@ -147,7 +147,15 @@
+    	     receiptResolveFn = resolve;
+	     });
+	-    let deployment = deployer.send(sendOptions).on('receipt', (receipt) => {
+	+	// update gasLimit
+	+	console.log('sendOptions=', sendOptions);
+	+    var newOptions = Object.create(sendOptions);
+	+    Object.assign(newOptions, sendOptions);
+	+    newOptions['gasPrice'] = await web3.eth.getGasPrice();
+	+    newOptions['gas'] = await deployer.estimateGas();
+	+    console.log('newOptions=', newOptions);
+	+
+	+    let deployment = deployer.send(newOptions).on('receipt', (receipt) => {
+    	     return receiptResolveFn(receipt);
+
 ## Environment
 
 Create files storing private key and infura API key.
