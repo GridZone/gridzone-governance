@@ -4,7 +4,7 @@ We detail a few of the core contracts.
 
 <dl>
   <dt>GridZone</dt>
-  <dd>The GridZone token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
+  <dd>GridZone.io (ZONE) governance token. Holders of this token have the ability to govern the protocol via the governor contract.</dd>
 </dl>
 
 <dl>
@@ -66,12 +66,12 @@ Fore more details of saddle, you can read [this page](https://github.com/compoun
 
 You can deploy contracts and verify with etherscan API key.
 
-### GridZone token
+### GridZone.io (ZONE) token
 
     npx saddle deploy -n mainnet ZONE $OWNER $ACCOUNT
     npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS ZONE $OWNER $ACCOUNT
 
-* OWNER is the address of GridZone token owner.
+* OWNER is the address of GridZone.io token owner.
 * ACCOUNT is the address to receive 20% of initial supply.
 * ETHSCAN_API_KEY is the API key of [etherscan.io](https://etherscan.io/).
 * DEPLOYED_ADDRESS is the address of deployed contract by above command - 'npx saddle deploy'.
@@ -90,7 +90,7 @@ You can deploy contracts and verify with etherscan API key.
     npx saddle verify $ETHSCAN_API_KEY -n mainnet $DEPLOYED_ADDRESS GovernorAlpha $TIMELOCK_CONTRACT $ZONE_CONTRACT $GOV_GUARDIAN
 
 * TIMELOCK_CONTRACT is the address of Timelock contract
-* ZONE_CONTRACT is the address of GridZone token contract
+* ZONE_CONTRACT is the address of GridZone.io token contract
 * GOV_GUARDIAN is the address of governance guardian. The guardian can cancel the any not executed proposal.
 
 ### VoteBox
