@@ -9,7 +9,7 @@ We detail a few of the core contracts.
 
 <dl>
   <dt>Governor Alpha</dt>
-  <dd>The administrator of the timelock contract. Holders of GridZone token may create and vote on proposals which will be queued into the timelock.</dd>
+  <dd>The administrator of the timelock contract. Holders of ZONE token may create and vote on proposals which will be queued into the timelock.</dd>
 </dl>
 
 ## Pre-installation
