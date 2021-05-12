@@ -1,4 +1,5 @@
-pragma solidity ^0.5.16;
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity >=0.6.0;
 pragma experimental ABIEncoderV2;
 
 contract GovernorAlpha {
@@ -12,8 +13,8 @@ contract GovernorAlpha {
 
     /// @notice The number of votes required in order for a voter to become a proposer
     function proposalThreshold() public view returns (uint) {
-        return div256(comp.totalSupply(), 100);
-     } // 1% of ZONE
+        return div256(comp.totalSupply(), 1000);
+     } // 0.1% of ZONE
 
     /// @notice The maximum number of actions that can be included in a proposal
     function proposalMaxOperations() public pure returns (uint) { return 10; } // 10 actions
@@ -198,7 +199,7 @@ contract GovernorAlpha {
         Proposal storage proposal = proposals[proposalId];
         proposal.executed = true;
         for (uint i = 0; i < proposal.targets.length; i++) {
-            timelock.executeTransaction.value(proposal.values[i])(proposal.targets[i], proposal.values[i], proposal.signatures[i], proposal.calldatas[i], proposal.eta);
+            timelock.executeTransaction{value: proposal.values[i]}(proposal.targets[i], proposal.values[i], proposal.signatures[i], proposal.calldatas[i], proposal.eta);
         }
         emit ProposalExecuted(proposalId);
     }
@@ -336,3 +337,4 @@ interface CompInterface {
     function getPriorVotes(address account, uint blockNumber) external view returns (uint256);
     function totalSupply() external view returns (uint256);
 }
+
