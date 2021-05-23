@@ -3,13 +3,13 @@
 We detail a few of the core contracts.
 
 <dl>
-  <dt>GridZone</dt>
-  <dd>The GridZone token (ZONE). Holders of this token have the ability to govern the protocol via the governor contract.</dd>
+  <dt>GridZone.io (ZONE) token</dt>
+  <dd>Holders of ZONE token have the ability to govern the protocol via the governor contract.</dd>
 </dl>
 
 <dl>
   <dt>Governor Alpha</dt>
-  <dd>The administrator of the timelock contract. Holders of GridZone token may create and vote on proposals which will be queued into the timelock.</dd>
+  <dd>The administrator of the timelock contract. Holders of ZONE token may create and vote on proposals which will be queued into the timelock.</dd>
 </dl>
 
 ## Installation
