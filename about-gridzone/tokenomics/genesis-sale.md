@@ -4,7 +4,7 @@
 
 
 
-* **Amount**: Min 0.1ETH. Hardcap 100 ETH.
+* **Amount**: Min 0.1ETH. Hardcap 200 ETH.
 
 ## Details:
 
