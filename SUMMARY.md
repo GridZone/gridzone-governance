@@ -13,6 +13,7 @@
   * [GridZone.io \(ZONE\) Token](about-gridzone/gridzone.io-zone-token.md)
   * [GridZone Governance](about-gridzone/gridzone-governance.md)
   * [Tokenomics](about-gridzone/tokenomics/README.md)
-    * [Genesis Sale](about-gridzone/tokenomics/genesis-sale.md)
+    * [Genesis Sale](about-gridzone/tokenomics/genesis-sale/README.md)
+      * [Untitled](about-gridzone/tokenomics/genesis-sale/untitled.md)
   * [Roadmap](about-gridzone/roadmap.md)
 
