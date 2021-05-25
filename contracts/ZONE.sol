@@ -29,7 +29,7 @@ contract CompBase is Ownable {
     uint256 internal constant _ecosystemSupply = 14000000 * (10 ** uint256(decimals)); // 50%
 
     uint256 internal constant _genesisEthCapacity = 200e18; // 200 ETH
-    uint256 internal constant _publicEthCapacity = 2000e18; // 2000 ETH
+    uint256 internal _publicEthCapacity = 2000e18; // 2000 ETH
 
     uint256 private _totalSupply = 0;
     uint256 private _totalLockedTokens = 0;
@@ -102,9 +102,9 @@ contract CompBase is Ownable {
 
     /**
      * @notice Construct a new GridZone token
-     * @param owner_ Owner address of the GridZone token
+     * @param ownerAddress Owner address of the GridZone token
      */
-    constructor(address owner_) Ownable(owner_) public {
+    constructor(address ownerAddress) Ownable(ownerAddress) public {
     }
 
     function totalSupply() public view returns (uint256) {
@@ -182,8 +182,8 @@ contract CompBase is Ownable {
     }
 
     function _approve(address owner, address spender, uint256 amount) internal {
-        require(owner != GLOBAL.ZERO_ADDRESS, "ZONE: approve from the zero address");
-        require(spender != GLOBAL.ZERO_ADDRESS, "ZONE: approve to the zero address");
+        require(owner != address(0), "ZONE: approve from the zero address");
+        require(spender != address(0), "ZONE: approve to the zero address");
 
         allowances[owner][spender] = amount;
         emit Approval(owner, spender, amount);
@@ -244,7 +244,7 @@ contract CompBase is Ownable {
         bytes32 structHash = keccak256(abi.encode(DELEGATION_TYPEHASH, delegatee, nonce, expiry));
         bytes32 digest = keccak256(abi.encodePacked("\x19\x01", domainSeparator, structHash));
         address signatory = ecrecover(digest, v, r, s);
-        require(signatory != GLOBAL.ZERO_ADDRESS, "ZONE::delegateBySig: invalid signature");
+        require(signatory != address(0), "ZONE::delegateBySig: invalid signature");
         require(nonce == nonces[signatory]++, "ZONE::delegateBySig: invalid nonce");
         require(now <= expiry, "ZONE::delegateBySig: signature expired");
         return _delegate(signatory, delegatee);
@@ -312,8 +312,8 @@ contract CompBase is Ownable {
     }
 
     function _transferTokens(address src, address dst, uint256 amount) internal {
-        require(src != GLOBAL.ZERO_ADDRESS, "ZONE::_transferTokens: cannot transfer from the zero address");
-        require(dst != GLOBAL.ZERO_ADDRESS, "ZONE::_transferTokens: cannot transfer to the zero address");
+        require(src != address(0), "ZONE::_transferTokens: cannot transfer from the zero address");
+        require(dst != address(0), "ZONE::_transferTokens: cannot transfer to the zero address");
 
         _beforeTokenTransfer(src, dst, amount);
 
@@ -326,14 +326,14 @@ contract CompBase is Ownable {
 
     function _moveDelegates(address srcRep, address dstRep, uint256 amount) internal {
         if (srcRep != dstRep && amount > 0) {
-            if (srcRep != GLOBAL.ZERO_ADDRESS) {
+            if (srcRep != address(0)) {
                 uint32 srcRepNum = numCheckpoints[srcRep];
                 uint256 srcRepOld = srcRepNum > 0 ? checkpoints[srcRep][srcRepNum - 1].votes : 0;
                 uint256 srcRepNew = srcRepOld.sub(amount);
                 _writeCheckpoint(srcRep, srcRepNum, srcRepOld, srcRepNew);
             }
 
-            if (dstRep != GLOBAL.ZERO_ADDRESS) {
+            if (dstRep != address(0)) {
                 uint32 dstRepNum = numCheckpoints[dstRep];
                 uint256 dstRepOld = dstRepNum > 0 ? checkpoints[dstRep][dstRepNum - 1].votes : 0;
                 uint256 dstRepNew = dstRepOld.add(amount);
@@ -376,21 +376,21 @@ contract CompBase is Ownable {
      * - `to` cannot be the zero address.
      */
     function _mint(address account, uint256 amount) internal {
-        require(account != GLOBAL.ZERO_ADDRESS, "ZONE: mint to the zero address");
+        require(account != address(0), "ZONE: mint to the zero address");
 
-        _beforeTokenTransfer(GLOBAL.ZERO_ADDRESS, account, amount);
+        _beforeTokenTransfer(address(0), account, amount);
 
         _totalSupply = _totalSupply.add(amount);
         _balances[account] = _balances[account].add(amount);
-        emit Transfer(GLOBAL.ZERO_ADDRESS, account, amount);
+        emit Transfer(address(0), account, amount);
 
-        _moveDelegates(GLOBAL.ZERO_ADDRESS, delegates[account], amount);
+        _moveDelegates(address(0), delegates[account], amount);
     }
 
     function _mintLockedToken(address account, uint256 amount, uint8 lockType, uint256 end) internal {
-        require(account != GLOBAL.ZERO_ADDRESS, "ZONE: mint to the zero address");
+        require(account != address(0), "ZONE: mint to the zero address");
 
-        _beforeTokenTransfer(GLOBAL.ZERO_ADDRESS, account, amount);
+        _beforeTokenTransfer(address(0), account, amount);
 
         _totalLockedTokens = _totalLockedTokens.add(amount);
 
@@ -403,10 +403,10 @@ contract CompBase is Ownable {
         });
         _lockedTokens[account].push(lockedToken);
 
-        emit Transfer(GLOBAL.ZERO_ADDRESS, account, amount);
+        emit Transfer(address(0), account, amount);
 
         if (lockType != LOCK_TYPE_BLACKLIST) {
-            _moveDelegates(GLOBAL.ZERO_ADDRESS, delegates[account], amount);
+            _moveDelegates(address(0), delegates[account], amount);
         }
         emit TokenLocked(account, amount, lockType, end);
     }
@@ -442,7 +442,7 @@ contract CompBase is Ownable {
         _balances[account] = _balances[account].add(amount);
 
         if (lockType == LOCK_TYPE_BLACKLIST) {
-            _moveDelegates(GLOBAL.ZERO_ADDRESS, delegates[account], amount);
+            _moveDelegates(address(0), delegates[account], amount);
         }
         emit TokenUnlocked(account, amount, lockType);
     }
@@ -464,15 +464,15 @@ contract CompBase is Ownable {
      * - `account` must have at least `amount` tokens.
      */
     function _burn(address account, uint256 amount) internal {
-        require(account != GLOBAL.ZERO_ADDRESS, "ZONE: burn from the zero address");
+        require(account != address(0), "ZONE: burn from the zero address");
 
-        _beforeTokenTransfer(account, GLOBAL.ZERO_ADDRESS, amount);
+        _beforeTokenTransfer(account, address(0), amount);
 
         _balances[account] = _balances[account].sub(amount, "ZONE: burn amount exceeds balance");
         _totalSupply = _totalSupply.sub(amount);
-        emit Transfer(account, GLOBAL.ZERO_ADDRESS, amount);
+        emit Transfer(account, address(0), amount);
 
-        _moveDelegates(delegates[account], GLOBAL.ZERO_ADDRESS, amount);
+        _moveDelegates(delegates[account], address(0), amount);
     }
 
     /**
@@ -483,7 +483,7 @@ contract CompBase is Ownable {
      * - minted tokens must not cause the total supply to go over the cap.
      */
     function _beforeTokenTransfer(address from, address to, uint256 amount) view internal {
-        if (from == GLOBAL.ZERO_ADDRESS) { // When minting tokens
+        if (from == address(0)) { // When minting tokens
             require(totalSupply().add(amount) <= _cap, "Capped: cap exceeded");
         }
     }
@@ -517,10 +517,11 @@ abstract contract ERC20Burnable is CompBase {
      * `amount`.
      */
     function burnFrom(address account, uint256 amount) public {
-        uint256 spenderAllowance = allowances[account][_msgSender()];
+        address spender = _msgSender();
+        uint256 spenderAllowance = allowances[account][spender];
         uint256 decreasedAllowance = spenderAllowance.sub(amount, "ZONE::burnFrom: burn amount exceeds allowance");
 
-        _approve(account, _msgSender(), decreasedAllowance);
+        _approve(account, spender, decreasedAllowance);
         _burn(account, amount);
     }
 }
@@ -534,15 +535,15 @@ contract ZONE is CompBase, ERC20Burnable {
 
     uint256 private _genesisRate;
     uint256 private _publicRate;
-    uint256 private immutable _genesisSaleEndTime;
-    uint256 private immutable _genesisSaleUnlockTime;
+    uint256 public immutable genesisSaleEndTime;
+    uint256 public immutable genesisSaleUnlockTime;
 
     // total purchased eth amount during ICO. The unit is wei
-    uint256 private _genesisBoughtEth = 0;
-    uint256 private _publicBoughtEth = 0;
+    uint256 public genesisSaleBoughtEth = 0;
+    uint256 public publicSaleBoughtEth = 0;
 
-    uint256 private _genesisSoldToken = 0;
-    uint256 private _publicSoldToken = 0;
+    uint256 public genesisSaleSoldToken = 0;
+    uint256 public publicSaleSoldToken = 0;
 
     bool private _genesisSaleFinished = false;
     bool private _publicSaleFinished = false;
@@ -571,6 +572,9 @@ contract ZONE is CompBase, ERC20Burnable {
     event SoldOnPublicSale(address indexed buyer, uint256 ethAmount, uint256 tokenAmount);
     event GenesisSaleFinished(uint256 boughtEth, uint256 soldToken);
     event PublicSaleFinished(uint256 boughtEth, uint256 soldToken);
+    event GenesisSaleRateChanged(uint256 newRate);
+    event PublicSaleRateChanged(uint256 newRate);
+    event PublicSaleEthCapacityChanged(uint256 newRate, uint256 newEthCapacity);
 
     constructor(address owner_, address vault_, address advisors_, address treasury_) CompBase(owner_) public {
         require(owner_ != vault_, "ZONE: You specified owner address as an vault address");
@@ -581,8 +585,8 @@ contract ZONE is CompBase, ERC20Burnable {
 
         _genesisRate = _genesisSupply.mul(10).div(_genesisEthCapacity).div(12); // 2/12 is for bonuses
         _publicRate = _publicSupply.div(_publicEthCapacity);
-        _genesisSaleEndTime = now + GLOBAL.SECONDS_IN_MONTH * 3;
-        _genesisSaleUnlockTime = now + GLOBAL.SECONDS_IN_MONTH * 4;
+        genesisSaleEndTime = now + GLOBAL.SECONDS_IN_MONTH * 3;
+        genesisSaleUnlockTime = now + GLOBAL.SECONDS_IN_MONTH * 4;
 
         AddVest(owner_, now, 0, GLOBAL.SECONDS_IN_YEAR * 2, _teamSupply);
         AddVest(advisors_, now, 0, GLOBAL.SECONDS_IN_YEAR, _advisorsSupply);
@@ -592,7 +596,12 @@ contract ZONE is CompBase, ERC20Burnable {
     }
 
     modifier onlyCommunity() {
-        require(governorTimelock == msg.sender, "ZONE: caller is not the timelock of governor.");
+        require(msg.sender == governorTimelock, "ZONE: The caller is not the governance timelock contract.");
+        _;
+    }
+
+    modifier onlyEndUser {
+        require(msg.sender == tx.origin, "ZONE: Only end-user");
         _;
     }
 
@@ -601,31 +610,31 @@ contract ZONE is CompBase, ERC20Burnable {
     }
 
     /**
-    * @param beneficiary_ address of the beneficiary to whom vested tokens are transferred
-    * @param cliff_ duration in seconds of the cliff in which tokens will begin to vest
-    * @param duration_ duration in seconds of the period in which the tokens will vest
+    * @param beneficiary address of the beneficiary to whom vested tokens are transferred
+    * @param cliff duration in seconds of the cliff in which tokens will begin to vest
+    * @param duration duration in seconds of the period in which the tokens will vest
     */
-    function AddVest(address beneficiary_, uint256 start_, uint256 cliff_, uint256 duration_, uint256 amount_) internal {
-        require(beneficiary_ != GLOBAL.ZERO_ADDRESS, "ZONE::AddVest Invalid beneficiary");
-        require(cliff_ <= duration_, "ZONE::AddVest cliff > duration");
+    function AddVest(address beneficiary, uint256 start, uint256 cliff, uint256 duration, uint256 amount) internal {
+        require(beneficiary != address(0), "ZONE::AddVest Invalid beneficiary");
+        require(cliff <= duration, "ZONE::AddVest cliff > duration");
 
         Vest memory vest = Vest({
-            beneficiary: beneficiary_,
-            start: start_,
-            cliff: start_.add(cliff_),
-            duration: duration_,
-            amount: amount_,
+            beneficiary: beneficiary,
+            start: start,
+            cliff: start.add(cliff),
+            duration: duration,
+            amount: amount,
             claimedAmount: 0,
             revoked: false
         });
 
-        vests[beneficiary_] = vest;
-        emit VestAdded(beneficiary_, start_, cliff_, duration_, amount_);
+        vests[beneficiary] = vest;
+        emit VestAdded(beneficiary, start, cliff, duration, amount);
     }
 
-    function calculateVestClaim(address beneficiary_) public view returns (uint256 vestedAmount_, uint256 claimedAmount_) {
-        Vest storage vest = vests[beneficiary_];
-        if (vest.beneficiary != beneficiary_) {
+    function calculateVestClaim(address beneficiary) public view returns (uint256 vestedAmount, uint256 claimedAmount) {
+        Vest storage vest = vests[beneficiary];
+        if (vest.beneficiary != beneficiary) {
             // Invalid beneficiary
             return (0, 0);
         }
@@ -638,31 +647,31 @@ contract ZONE is CompBase, ERC20Burnable {
         } else if (vest.start.add(vest.duration) <= now) {
             return (vest.amount, vest.claimedAmount);
         } else {
-            vestedAmount_ = vest.amount.mul(now.sub(vest.start)).div(vest.duration);
-            return (vestedAmount_, vest.claimedAmount);
+            vestedAmount = vest.amount.mul(now.sub(vest.start)).div(vest.duration);
+            return (vestedAmount, vest.claimedAmount);
         }
     }
 
-    function claimVestedToken(address beneficiary_) external {
-        (uint256 vestedAmount_, uint256 claimedAmount_) = calculateVestClaim(beneficiary_);
-        require(claimedAmount_ < vestedAmount_, "ZONE: Nothing to be claimed");
+    function claimVestedToken(address beneficiary) external {
+        (uint256 vested, uint256 claimed) = calculateVestClaim(beneficiary);
+        require(claimed < vested, "ZONE: No claimable token");
 
-        uint256 fund = vestedAmount_.sub(claimedAmount_);
-        vests[beneficiary_].claimedAmount = vestedAmount_;
-        _mint(beneficiary_, fund);
-        emit VestClaimed(beneficiary_, fund);
+        uint256 fund = vested.sub(claimed);
+        vests[beneficiary].claimedAmount = vested;
+        _mint(beneficiary, fund);
+        emit VestClaimed(beneficiary, fund);
     }
 
-    function revokeVest(address beneficiary_) external onlyCommunity {
-        Vest storage vest = vests[beneficiary_];
-        require(vest.beneficiary == beneficiary_, "ZONE: Invalid beneficiary");
+    function revokeVest(address beneficiary) external onlyCommunity {
+        Vest storage vest = vests[beneficiary];
+        require(vest.beneficiary == beneficiary, "ZONE: Invalid beneficiary");
         require(vest.revoked == false, "ZONE: Already revoked");
 
         uint256 fund = vest.amount.sub(vest.claimedAmount);
         if (0 < fund) {
             vest.claimedAmount = vest.amount;
-            _mint(beneficiary_, fund);
-            emit VestClaimed(beneficiary_, fund);
+            _mint(beneficiary, fund);
+            emit VestClaimed(beneficiary, fund);
         }
         vest.revoked = true;
     }
@@ -694,7 +703,7 @@ contract ZONE is CompBase, ERC20Burnable {
                 unlocked = true;
             }
         }
-        require(unlocked, "ZONE: There are no the unlockable tokens");
+        require(unlocked, "ZONE: No unlockable token.");
     }
 
     function _isUnlockable(uint8 lockType, uint256 end) internal view returns (bool) {
@@ -721,7 +730,7 @@ contract ZONE is CompBase, ERC20Burnable {
     //
     // Quarterly vesting for ecosystem
     //
-    function calculateEcosystemClaim() public view returns (uint256 vestedAmount_) {
+    function calculateEcosystemVested() public view returns (uint256 vestedAmount) {
         uint256 quartersCount = now.sub(launchTime).div(GLOBAL.SECONDS_IN_QUARTER);
         uint256 yearsCount = quartersCount.div(GLOBAL.QUARTERS_IN_YEAR);
         uint256 currentQurter = quartersCount.mod(GLOBAL.QUARTERS_IN_YEAR);
@@ -729,30 +738,30 @@ contract ZONE is CompBase, ERC20Burnable {
 
         if (0 < yearsCount) {
             // _ecosystemSupply * (1 - 1 / (2*yearsCount))
-            vestedAmount_ =  _ecosystemSupply.sub(_ecosystemSupply.div(2).div(yearsCount));
+            vestedAmount =  _ecosystemSupply.sub(_ecosystemSupply.div(2).div(yearsCount));
         } else {
-            vestedAmount_ = 0;
+            vestedAmount = 0;
         }
 
         for (uint8 quarter = 0; quarter <= currentQurter; quarter ++) {
             uint256 vestedInQuarter = yearSupply.mul(quarterlyRate[quarter]).div(quarterlyRateDenominator);
-            vestedAmount_ = vestedAmount_.add(vestedInQuarter);
+            vestedAmount = vestedAmount.add(vestedInQuarter);
         }
-        return vestedAmount_;
+        return vestedAmount;
     }
 
     function claimEcosystemVest() external {
-        uint256 vestedAmount_ = calculateEcosystemClaim();
-        require (claimedEcosystemVest < vestedAmount_, "ZONE: Nothing to be claimed for ecosystem.");
+        uint256 vested = calculateEcosystemVested();
+        require (claimedEcosystemVest < vested, "ZONE: No claimable token for the ecosystem.");
 
-        uint256 fund = vestedAmount_.sub(claimedEcosystemVest);
-        claimedEcosystemVest = vestedAmount_;
+        uint256 fund = vested.sub(claimedEcosystemVest);
+        claimedEcosystemVest = vested;
         _mint(vault, fund);
         emit EcosystemVestClaimed(vault, fund);
     }
 
     function revokeEcosystemVest() external onlyCommunity {
-        require (claimedEcosystemVest < _ecosystemSupply, "ZONE: All tokens has already been claimed for ecosystem.");
+        require (claimedEcosystemVest < _ecosystemSupply, "ZONE: All tokens already have been claimed for the ecosystem.");
 
         uint256 fund = _ecosystemSupply.sub(claimedEcosystemVest);
         claimedEcosystemVest = _ecosystemSupply;
@@ -764,7 +773,7 @@ contract ZONE is CompBase, ERC20Burnable {
     // Genesis and Public sale
     //
     function isGenesisSaleFinished() external view returns (bool) {
-        if (_genesisSaleFinished == true || _genesisSaleEndTime <= now) {
+        if (_genesisSaleFinished == true || genesisSaleEndTime <= now) {
             return true;
         }
         return false;
@@ -777,34 +786,50 @@ contract ZONE is CompBase, ERC20Burnable {
     // Crowds Sale contains both the Genesis sale and the Public sale
     function isCrowdsaleFinished() external view returns (bool) {
         if (_publicSaleFinished) return true;
-        if (_genesisSaleEndTime <= now) return false;
+        if (genesisSaleEndTime <= now) return false;
         if (_genesisSaleFinished) return true;
         return false;
     }
 
     function rate() public view returns (uint256) {
-        return (now < _genesisSaleEndTime) ? _genesisRate : _publicRate;
+        return (now < genesisSaleEndTime) ? _genesisRate : _publicRate;
     }
 
     function getGenesisSaleRate() external view returns(uint256) {
         return _genesisRate;
     }
 
-    function setGenesisSaleRate(uint256 _newRate) external onlyOwner {
-        _genesisRate = _newRate;
+    function setGenesisSaleRate(uint256 newRate) external onlyOwner {
+        require(0 < newRate, "ZONE: The rate can't be 0.");
+        _genesisRate = newRate;
+        emit GenesisSaleRateChanged(_genesisRate);
     }
 
     function getPublicSaleRate() external view returns(uint256) {
         return _publicRate;
     }
 
-    function setPublicSaleRate(uint256 _newRate) public onlyOwner {
-        _publicRate = _newRate;
+    function setPublicSaleRate(uint256 newRate) public onlyOwner {
+        require(0 < newRate, "ZONE: The rate can't be 0.");
+        _publicRate = newRate;
+        emit PublicSaleRateChanged(_publicRate);
+    }
+
+    function getPublicSaleEthCapacity() external view returns(uint256) {
+        return _publicEthCapacity;
+    }
+
+    function setPublicSaleEthCapacity(uint256 newEthCapacity) public onlyOwner {
+        require(publicSaleBoughtEth < newEthCapacity, "ZONE: The capacity must be greater than the already bought amount in the public sale.");
+
+        _publicRate = _publicSupply.sub(publicSaleSoldToken).div(newEthCapacity.sub(publicSaleBoughtEth));
+        _publicEthCapacity = newEthCapacity;
+        emit PublicSaleEthCapacityChanged(_publicRate, _publicEthCapacity);
     }
 
     function finishCrowdsale() external onlyOwner  {
         _finishGenesisSale();
-       if (_genesisSaleEndTime <= now) {
+       if (genesisSaleEndTime <= now) {
            _finishPublicSale();
        }
     }
@@ -813,34 +838,35 @@ contract ZONE is CompBase, ERC20Burnable {
         if (_genesisSaleFinished) return;
         _genesisSaleFinished = true;
 
-        uint256 leftOver = _genesisSupply.sub(_genesisSoldToken);
+        uint256 leftOver = _genesisSupply.sub(genesisSaleSoldToken);
         if (leftOver > 0) {
             _mint(owner(), leftOver);
         }
-        emit GenesisSaleFinished(_genesisBoughtEth, _genesisSoldToken);
+        emit GenesisSaleFinished(genesisSaleBoughtEth, genesisSaleSoldToken);
     }
 
     function _finishPublicSale() private {
         if (_publicSaleFinished) return;
         _publicSaleFinished = true;
 
-        uint256 leftOver = _publicSupply.sub(_publicSoldToken);
+        uint256 leftOver = _publicSupply.sub(publicSaleSoldToken);
         if (leftOver > 0) {
             _mint(owner(), leftOver);
         }
-        emit PublicSaleFinished(_publicBoughtEth, _publicSoldToken);
+        emit PublicSaleFinished(publicSaleBoughtEth, publicSaleSoldToken);
     }
 
-    function _sellOnGenesisSale(address payable buyer_, uint256 ethAmount_) private {
-        uint256 capacity = _genesisEthCapacity.sub(_genesisBoughtEth);
-        uint256 ethAmount = (ethAmount_ < capacity) ? ethAmount_ : capacity;
-        uint256 refund = ethAmount_ - ethAmount;
+    function _sellOnGenesisSale(address payable buyer, uint256 ethAmount) private {
+        uint256 capacity = _genesisEthCapacity.sub(genesisSaleBoughtEth);
+        uint256 _ethAmount = (ethAmount < capacity) ? ethAmount : capacity;
+        uint256 refund = ethAmount - _ethAmount;
+        require(0 < _ethAmount, "ZONE: The amount can't be 0.");
 
-        uint256 amount = ethAmount.mul(_genesisRate);
+        uint256 amount = _ethAmount.mul(_genesisRate);
         uint256 genesisBonus = amount.div(10);   // when buying during Genesis sale, 10% bonus
         uint256 purchaseBonus = 0;
 
-        if (ethAmount >= 10e18) {
+        if (_ethAmount >= 10e18) {
             // when buying for over 10eth, 10% bonus
             purchaseBonus = amount.div(10);
         }
@@ -848,64 +874,66 @@ contract ZONE is CompBase, ERC20Burnable {
         // total token amount
         amount = amount.add(genesisBonus).add(purchaseBonus);
 
-        _genesisBoughtEth = _genesisBoughtEth.add(ethAmount);
-        _genesisSoldToken = _genesisSoldToken.add(amount);
-        require(_genesisSoldToken <= _genesisSupply, "ZONE: Genesis supply is insufficient.");
+        genesisSaleBoughtEth = genesisSaleBoughtEth.add(_ethAmount);
+        genesisSaleSoldToken = genesisSaleSoldToken.add(amount);
+        require(genesisSaleSoldToken <= _genesisSupply, "ZONE: Genesis supply is insufficient.");
 
-        // mint token amount and bonuses to buyer_
-        _mintLockedToken(buyer_, amount, LOCK_TYPE_GENESIS, _genesisSaleUnlockTime);
+        // mint token amount and bonuses to buyer
+        _mintLockedToken(buyer, amount, LOCK_TYPE_GENESIS, genesisSaleUnlockTime);
 
         address payable ownerAddress = address(uint160(owner()));
-        ownerAddress.transfer(ethAmount);
-        emit SoldOnGenesisSale(buyer_, ethAmount, amount);
+        ownerAddress.transfer(_ethAmount);
+        emit SoldOnGenesisSale(buyer, _ethAmount, amount);
 
         if (0 < refund) {
-            buyer_.transfer(refund);
+            buyer.transfer(refund);
         }
-        if (_genesisEthCapacity <= _genesisBoughtEth) {
+        if (_genesisEthCapacity <= genesisSaleBoughtEth) {
             _finishGenesisSale();
         }
     }
 
-    function _sellOnPublicSale(address payable buyer_, uint256 ethAmount_) private {
-        uint256 capacity = _publicEthCapacity.sub(_publicBoughtEth);
-        uint256 ethAmount = (ethAmount_ < capacity) ? ethAmount_ : capacity;
-        uint256 refund = ethAmount_ - ethAmount;
+    function _sellOnPublicSale(address payable buyer, uint256 ethAmount) private {
+        uint256 capacity = _publicEthCapacity.sub(publicSaleBoughtEth);
+        uint256 _ethAmount = (ethAmount < capacity) ? ethAmount : capacity;
+        uint256 refund = ethAmount - _ethAmount;
+        require(0 < _ethAmount, "ZONE: The amount can't be 0.");
 
-        uint256 amount = ethAmount.mul(_publicRate);
+        uint256 amount = _ethAmount.mul(_publicRate);
 
-        _publicBoughtEth = _publicBoughtEth.add(ethAmount);
-        _publicSoldToken = _publicSoldToken.add(amount);
-        require(_publicSoldToken <= _publicSupply, "ZONE: Public supply is insufficient.");
+        publicSaleBoughtEth = publicSaleBoughtEth.add(_ethAmount);
+        publicSaleSoldToken = publicSaleSoldToken.add(amount);
+        require(publicSaleSoldToken <= _publicSupply, "ZONE: Public supply is insufficient.");
 
-        // mint token amount to buyer_
-        _mint(buyer_, amount);
+        // mint token amount to buyer
+        _mint(buyer, amount);
 
         address payable ownerAddress = address(uint160(owner()));
-        ownerAddress.transfer(ethAmount);
-        emit SoldOnPublicSale(buyer_, ethAmount, amount);
+        ownerAddress.transfer(_ethAmount);
+        emit SoldOnPublicSale(buyer, _ethAmount, amount);
 
         if (0 < refund) {
-            buyer_.transfer(refund);
+            buyer.transfer(refund);
         }
-        if (_publicEthCapacity <= _publicBoughtEth) {
+        if (_publicEthCapacity <= publicSaleBoughtEth) {
             _finishPublicSale();
         }
     }
 
     // low level token purchase function
-    function purchase() external payable {
-        require(_msgSender() != GLOBAL.ZERO_ADDRESS);
+    function purchase() external payable onlyEndUser {
+        address payable buyer = _msgSender();
+        require(buyer != address(0));
         require(msg.value >= 1e16, "ZONE: The purchase minimum amount is 0.01 ETH");
 
-        if (now < _genesisSaleEndTime) {
+        if (now < genesisSaleEndTime) {
             require(_genesisSaleFinished == false, "ZONE: Genesis sale already finished");
-            _sellOnGenesisSale(_msgSender(), msg.value);
+            _sellOnGenesisSale(buyer, msg.value);
         } else {
             _finishGenesisSale();
 
             require(_publicSaleFinished == false, "ZONE: Public sale already finished");
-            _sellOnPublicSale(_msgSender(), msg.value);
+            _sellOnPublicSale(buyer, msg.value);
         }
     }
 

@@ -15,6 +15,7 @@ BigNumber.config({
 
 const {
   blockTimestamp,
+  etherBalance,
   increaseTime,
   sendEth,
 } = require('./Utils/Ethereum');
@@ -29,13 +30,12 @@ describe('ZONE', () => {
   const name = 'GridZone.io';
   const symbol = 'ZONE';
 
-  let owner, vault, advisors, treasury, community;
+  let deployer, owner, vault, advisors, treasury, community;
   let zone, launchTime;
   let ret;
 
   beforeEach(async () => {
-    [owner, vault, advisors, treasury, community, a1, a2, ...accounts] = await ethers.getSigners();
-    deployer = owner
+    [deployer, owner, vault, advisors, treasury, community, a1, a2, ...accounts] = await ethers.getSigners();
 
     zone = await waffle.deployContract(deployer, ZONE_JSON, [owner.address, vault.address, advisors.address, treasury.address]);
     launchTime = await zone.launchTime();
@@ -116,7 +116,7 @@ describe('ZONE', () => {
       expect(await zone.balanceOf(owner.address)).to.equal(supply.toString());
     });
 
-    it('revoke', async () => {
+    it('should be able to revoke by community', async () => {
       ret = await zone.calculateVestClaim(owner.address);
       expect(ret[0]).to.equal("0");
       expect(ret[1]).to.equal("0");
@@ -124,8 +124,9 @@ describe('ZONE', () => {
 
       // revoke after 1 month
       await increaseTime(SECONDS_IN_MONTH);
-      await expectRevert(zone.revokeVest(owner.address), "revert ZONE: caller is not the timelock of governor.");
-      await zone.setGovernorTimelock(community.address);
+      await expectRevert(zone.revokeVest(owner.address), "revert ZONE: The caller is not the governance timelock contract.");
+      await expectRevert(zone.setGovernorTimelock(community.address), "revert Ownable: caller is not the owner");
+      await zone.connect(owner).setGovernorTimelock(community.address);
       await zone.connect(community).revokeVest(owner.address);
 
       ret = await zone.calculateVestClaim(owner.address);
@@ -176,7 +177,7 @@ describe('ZONE', () => {
       expect(await zone.balanceOf(advisors.address)).to.equal(supply.toString());
     });
 
-    it('revoke', async () => {
+    it('should be able to revoke by community', async () => {
       ret = await zone.calculateVestClaim(advisors.address);
       expect(ret[0]).to.equal("0");
       expect(ret[1]).to.equal("0");
@@ -184,8 +185,8 @@ describe('ZONE', () => {
 
       // revoke after 1 month
       await increaseTime(SECONDS_IN_MONTH);
-      await expectRevert(zone.revokeVest(advisors.address), "revert ZONE: caller is not the timelock of governor.");
-      await zone.setGovernorTimelock(community.address);
+      await expectRevert(zone.revokeVest(advisors.address), "revert ZONE: The caller is not the governance timelock contract.");
+      await zone.connect(owner).setGovernorTimelock(community.address);
       await zone.connect(community).revokeVest(advisors.address);
 
       ret = await zone.calculateVestClaim(advisors.address);
@@ -237,18 +238,25 @@ describe('ZONE', () => {
       const amount2 = (new BigNumber(10)).shiftedBy(18).multipliedBy(rate).multipliedBy(1.2);
       await zone.connect(a1).purchase({value: (new BigNumber(10)).shiftedBy(18).toString()});
       expect(await zone.balanceOf(a1.address)).to.equal(amount2.plus(amount1).toString());
+
+      expect(await zone.genesisSaleBoughtEth()).to.equal((new BigNumber(19.99)).shiftedBy(18).toString());
+      expect(await zone.genesisSaleSoldToken()).to.equal(amount2.plus(amount1).toString());
+
     });
 
-    it('set rate', async () => {
+    it('should be able to set rate', async () => {
+      await expectRevert(zone.setGenesisSaleRate(0), "revert Ownable: caller is not the owner");
+      await expectRevert(zone.connect(owner).setGenesisSaleRate(0), "revert ZONE: The rate can't be 0.");
+
       const newRate = rate.multipliedBy(2);
-      await zone.setGenesisSaleRate(newRate.toString());
+      await zone.connect(owner).setGenesisSaleRate(newRate.toString());
       expect(await zone.getGenesisSaleRate()).to.equal(newRate.toString());
 
-      const capacity = supply.multipliedBy(10).dividedBy(12).dividedToIntegerBy(newRate).shiftedBy(-18);
-      await zone.connect(a1).purchase({value: (capacity).shiftedBy(18).toString()});
+      const capacity = supply.multipliedBy(10).dividedBy(12).dividedToIntegerBy(newRate);
+      await zone.connect(a1).purchase({value: capacity.toString()});
     });
 
-    it('finish by purchase', async () => {
+    it('should be able to finish by purchase', async () => {
       const amount1 = (new BigNumber(200)).shiftedBy(18).multipliedBy(rate).multipliedBy(1.2);
       await zone.connect(a1).purchase({value: (new BigNumber(201)).shiftedBy(18).toString()});
       expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
@@ -258,7 +266,7 @@ describe('ZONE', () => {
       await expectRevert(zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()}), "revert ZONE: Genesis sale already finished");
     });
 
-    it('finish by expire', async () => {
+    it('should be able to finish by expire', async () => {
       await increaseTime(SECONDS_IN_MONTH*3 - 3600);
       expect(await zone.isGenesisSaleFinished()).to.equal(false);
       await increaseTime(3600);
@@ -270,55 +278,57 @@ describe('ZONE', () => {
       expect(await zone.balanceOf(owner.address)).to.equal(supply.toString());
     });
 
-    it('finish by owner', async () => {
-      await zone.finishCrowdsale();
+    it('should be able to finish by owner', async () => {
+      await expectRevert(zone.finishCrowdsale(), "revert Ownable: caller is not the owner");
+
+      await zone.connect(owner).finishCrowdsale();
       expect(await zone.isGenesisSaleFinished()).to.equal(true);
       await expectRevert(zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()}), "revert ZONE: Genesis sale already finished");
     });
 
-    it('lock', async () => {
+    it('will be locked after purchased', async () => {
       const amount1 = (new BigNumber(1)).shiftedBy(18).multipliedBy(rate).multipliedBy(1.1);
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
-      expect(await zone.balanceOf(owner.address)).to.equal(amount1.toString());
-      expect(await zone.getLockedAmount(owner.address)).to.equal(amount1.toString());
-      expect(await zone.voteBalanceOf(owner.address)).to.equal(amount1.toString());
-      expect(await zone.getCurrentVotes(owner.address)).to.equal('0');
-      await zone.delegate(owner.address);
-      expect(await zone.getCurrentVotes(owner.address)).to.equal(amount1.toString());
-      await expectRevert(zone.transfer(a1.address, amount1.toString()), "revert SafeMath: subtraction overflow");
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+      expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
+      expect(await zone.getLockedAmount(a1.address)).to.equal(amount1.toString());
+      expect(await zone.voteBalanceOf(a1.address)).to.equal(amount1.toString());
+      expect(await zone.getCurrentVotes(a1.address)).to.equal('0');
+      await zone.connect(a1).delegate(a1.address);
+      expect(await zone.getCurrentVotes(a1.address)).to.equal(amount1.toString());
+      await expectRevert(zone.transfer(a2.address, amount1.toString()), "revert SafeMath: subtraction overflow");
     });
 
-    it('unlock after 4 months', async () => {
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
-      await zone.purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+    it('should be able to unlock after 4 months', async () => {
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
+      await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
       const amount1 = (new BigNumber(5)).shiftedBy(18).multipliedBy(rate).multipliedBy(1.1);
 
-      expect(await zone.getUnlockableAmount(owner.address)).to.equal('0');
-      await expectRevert(zone.Unlock(owner.address), "revert ZONE: There are no the unlockable tokens");
+      expect(await zone.getUnlockableAmount(a1.address)).to.equal('0');
+      await expectRevert(zone.connect(a1).Unlock(a1.address), "revert ZONE: No unlockable token.");
 
       await increaseTime(SECONDS_IN_MONTH*4);
-      expect(await zone.getUnlockableAmount(owner.address)).to.equal(amount1.toString());
-      await zone.Unlock(owner.address);
-      expect(await zone.getUnlockableAmount(owner.address)).to.equal('0');
-      expect(await zone.balanceOf(owner.address)).to.equal(amount1.toString());
+      expect(await zone.getUnlockableAmount(a1.address)).to.equal(amount1.toString());
+      await zone.Unlock(a1.address);
+      expect(await zone.getUnlockableAmount(a1.address)).to.equal('0');
+      expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
 
-      await zone.delegate(a2.address);
+      await zone.connect(a1).delegate(a2.address);
       expect(await zone.getCurrentVotes(a2.address)).to.equal(amount1.toString());
 
-      await zone.transfer(a1.address, amount1.toString());
-      expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
+      await zone.connect(a1).transfer(deployer.address, amount1.toString());
+      expect(await zone.balanceOf(deployer.address)).to.equal(amount1.toString());
       expect(await zone.getCurrentVotes(a2.address)).to.equal('0');
     });
 
-    it('unlock after Public sale finished', async () => {
+    it('should be able to unlock after Public sale finished', async () => {
       const amount1 = (new BigNumber(1)).shiftedBy(18).multipliedBy(rate).multipliedBy(1.1);
       await zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()})
 
       await increaseTime(SECONDS_IN_MONTH*3);
-      await zone.finishCrowdsale();
+      await zone.connect(owner).finishCrowdsale();
 
       expect(await zone.getUnlockableAmount(a1.address)).to.equal(amount1.toString());
       await zone.Unlock(a1.address);
@@ -329,7 +339,8 @@ describe('ZONE', () => {
 
   describe('Public sale', () => {
     const supply = (new BigNumber(4200000)).shiftedBy(18);
-    const rate = supply.dividedToIntegerBy("2000000000000000000000");
+    const capacity = (new BigNumber(2000)).shiftedBy(18);
+    const rate = supply.dividedToIntegerBy(capacity);
 
     it('simple purchase', async () => {
       await increaseTime(SECONDS_IN_MONTH*3);
@@ -341,27 +352,60 @@ describe('ZONE', () => {
       const amount1 = (new BigNumber(0.01)).shiftedBy(18).multipliedBy(rate);
       await zone.connect(a1).purchase({value: (new BigNumber(0.01)).shiftedBy(18).toString()})
       expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
-      await zone.transfer(a2.address, amount1.toString());
+      await zone.connect(a1).transfer(a2.address, amount1.toString());
       expect(await zone.balanceOf(a2.address)).to.equal(amount1.toString());
     });
 
-    it('set rate', async () => {
+    it('should be able to set rate', async () => {
+      await expectRevert(zone.setPublicSaleRate(0), "revert Ownable: caller is not the owner");
+      await expectRevert(zone.connect(owner).setPublicSaleRate(0), "revert ZONE: The rate can't be 0.");
+
       const newRate = rate.multipliedBy(2);
-      await zone.setPublicSaleRate(newRate.toString());
+      await zone.connect(owner).setPublicSaleRate(newRate.toString());
       expect(await zone.getPublicSaleRate()).to.equal(newRate.toString());
 
       await increaseTime(SECONDS_IN_MONTH*3);
-      const capacity = supply.dividedToIntegerBy(newRate).shiftedBy(-18);
-      await zone.connect(a1).purchase({value: capacity.shiftedBy(18).toString()})
+      const newCapacity = supply.dividedToIntegerBy(newRate);
+      await zone.connect(a1).purchase({value: newCapacity.toString()})
       expect(await zone.balanceOf(a1.address)).to.equal(supply.toString());
     });
 
-    it('finish by purchase', async () => {
+    it('should be able to set the ETH capacity', async () => {
+      await expectRevert(zone.setPublicSaleEthCapacity(0), "revert Ownable: caller is not the owner");
+      await expectRevert(zone.connect(owner).setPublicSaleEthCapacity(0), "revert ZONE: The capacity must be greater than the already bought amount in the public sale.");
+
+      expect(await zone.getPublicSaleEthCapacity()).to.equal(capacity.toString());
+
+      await increaseTime(SECONDS_IN_MONTH*3);
+      await zone.connect(a1).purchase({value: capacity.dividedBy(2).toString()})
+      expect(await zone.publicSaleBoughtEth()).to.equal(capacity.dividedBy(2).toString());
+      expect(await zone.publicSaleSoldToken()).to.equal(supply.dividedBy(2).toString());
+      expect(await zone.balanceOf(a1.address)).to.equal(supply.dividedBy(2).toString());
+
+      await expectRevert(zone.connect(owner).setPublicSaleEthCapacity(capacity.dividedBy(2).toString()), "revert ZONE: The capacity must be greater than the already bought amount in the public sale.");
+
+      const newCapacity = capacity.multipliedBy(2);
+      await zone.connect(owner).setPublicSaleEthCapacity(newCapacity.toString());
+      const remainedSupply = supply.minus((await zone.publicSaleSoldToken()).toString());
+      const remainedCapacity = newCapacity.minus((await zone.publicSaleBoughtEth()).toString());
+      const newRate = remainedSupply.dividedToIntegerBy(remainedCapacity);
+      expect(await zone.getPublicSaleEthCapacity()).to.equal(newCapacity.toString());
+      expect(await zone.getPublicSaleRate()).to.equal(newRate.toString());
+
+      await zone.connect(a2).purchase({value: newCapacity.multipliedBy(3).dividedBy(4).toString()})
+      expect(await zone.publicSaleBoughtEth()).to.equal(newCapacity.toString());
+      expect(await zone.publicSaleSoldToken()).to.equal(supply.toString());
+      expect(await zone.balanceOf(a2.address)).to.equal(supply.dividedBy(2).toString());
+    });
+
+    it('should be able to finish by purchase', async () => {
       await increaseTime(SECONDS_IN_MONTH*3);
 
+      const ethBalance = new BigNumber((await etherBalance(owner.address)).toString());
       const amount1 = (new BigNumber(2000)).shiftedBy(18).multipliedBy(rate);
       await zone.connect(a1).purchase({value: (new BigNumber(2001)).shiftedBy(18).toString()})
       expect(await zone.balanceOf(a1.address)).to.equal(amount1.toString());
+      expect((await etherBalance(owner.address)).toString()).to.equal(ethBalance.plus((new BigNumber(2000)).shiftedBy(18)).toString());
 
       const genesisSupply = (new BigNumber(1400000)).shiftedBy(18);
       expect(await zone.balanceOf(owner.address)).to.equal(supply.minus(amount1).plus(genesisSupply).toString());
@@ -371,10 +415,10 @@ describe('ZONE', () => {
       await expectRevert(zone.connect(a1).purchase({value: (new BigNumber(1)).shiftedBy(18).toString()}), "revert ZONE: Public sale already finished");
     });
 
-    it('finish by owner', async () => {
+    it('should be able to finish by owner', async () => {
       await increaseTime(SECONDS_IN_MONTH*3);
 
-      await zone.finishCrowdsale();
+      await zone.connect(owner).finishCrowdsale();
       expect(await zone.isGenesisSaleFinished()).to.equal(true);
 
       const genesisSupply = (new BigNumber(1400000)).shiftedBy(18);
@@ -387,13 +431,13 @@ describe('ZONE', () => {
   describe('Treasury sale', () => {
     const supply = (new BigNumber(3640000)).shiftedBy(18);
 
-    it('lock', async () => {
+    it('will be locked after minted', async () => {
       expect(await zone.getLockedAmount(treasury.address)).to.equal(supply.toString());
       expect(await zone.voteBalanceOf(treasury.address)).to.equal('0');
       await expectRevert(zone.transfer(a1.address, supply.toString()), "revert SafeMath: subtraction overflow");
     });
 
-    it('unlock after 1 year', async () => {
+    it('will be unlocked after 1 year', async () => {
       expect(await zone.getUnlockableAmount(treasury.address)).to.equal('0');
 
       await increaseTime(SECONDS_IN_YEAR);
@@ -416,26 +460,27 @@ describe('ZONE', () => {
       var vestedAmount = new BigNumber(0);
       const q1_1 = supply.dividedBy(2).multipliedBy(3182).dividedToIntegerBy(10000);
       vestedAmount = vestedAmount.plus(q1_1);
-      expect(await zone.calculateEcosystemClaim()).to.equal(vestedAmount.toString());
-      
+      expect(await zone.calculateEcosystemVested()).to.equal(vestedAmount.toString());
+
       await increaseTime(SECONDS_IN_QUARTER);
       const q1_2 = supply.dividedBy(2).multipliedBy(2676).dividedToIntegerBy(10000);
       vestedAmount = vestedAmount.plus(q1_2);
-      expect(await zone.calculateEcosystemClaim()).to.equal(vestedAmount.toString());
+      expect(await zone.calculateEcosystemVested()).to.equal(vestedAmount.toString());
 
       // claim
       await zone.claimEcosystemVest();
       expect(await zone.claimedEcosystemVest()).to.equal(vestedAmount.toString());
       expect(await zone.balanceOf(vault.address)).to.equal(airdropSupply.plus(vestedAmount).toString());
+      await expectRevert(zone.claimEcosystemVest(), "revert ZONE: No claimable token for the ecosystem.");
 
       await increaseTime(SECONDS_IN_QUARTER*2);
       vestedAmount = supply.dividedBy(2);
-      expect(await zone.calculateEcosystemClaim()).to.equal(vestedAmount.toString());
+      expect(await zone.calculateEcosystemVested()).to.equal(vestedAmount.toString());
 
       await increaseTime(SECONDS_IN_QUARTER);
       const q2_1 = supply.dividedBy(4).multipliedBy(3182).dividedToIntegerBy(10000);
       vestedAmount = vestedAmount.plus(q2_1);
-      expect(await zone.calculateEcosystemClaim()).to.equal(vestedAmount.toString());
+      expect(await zone.calculateEcosystemVested()).to.equal(vestedAmount.toString());
 
       // claim
       await zone.claimEcosystemVest();
@@ -443,11 +488,11 @@ describe('ZONE', () => {
       expect(await zone.balanceOf(vault.address)).to.equal(airdropSupply.plus(vestedAmount).toString());
     });
 
-    it('revoke', async () => {
+    it('should be able to revoke', async () => {
       var vestedAmount = new BigNumber(0);
       const q1_1 = supply.dividedBy(2).multipliedBy(3182).dividedToIntegerBy(10000);
       vestedAmount = vestedAmount.plus(q1_1);
-      expect(await zone.calculateEcosystemClaim()).to.equal(vestedAmount.toString());
+      expect(await zone.calculateEcosystemVested()).to.equal(vestedAmount.toString());
 
       // claim
       await zone.claimEcosystemVest();
@@ -456,11 +501,12 @@ describe('ZONE', () => {
 
       // revoke after 4 month
       await increaseTime(SECONDS_IN_QUARTER);
-      await expectRevert(zone.revokeEcosystemVest(), "revert ZONE: caller is not the timelock of governor.");
-      await zone.setGovernorTimelock(community.address);
+      await expectRevert(zone.revokeEcosystemVest(), "revert ZONE: The caller is not the governance timelock contract.");
+      await zone.connect(owner).setGovernorTimelock(community.address);
       await zone.connect(community).revokeEcosystemVest();
       expect(await zone.claimedEcosystemVest()).to.equal(supply.toString());
       expect(await zone.balanceOf(vault.address)).to.equal(airdropSupply.plus(supply).toString());
+      await expectRevert(zone.connect(community).revokeEcosystemVest(), "revert ZONE: All tokens already have been claimed for the ecosystem.");
     });
   });
 
