@@ -22,13 +22,13 @@ contract CompBase is Ownable {
     // Total number of tokens in circulation
     uint256 internal constant _teamSupply = 3360000 * (10 ** uint256(decimals)); // 12%
     uint256 internal constant _advisorsSupply = 980000 * (10 ** uint256(decimals)); // 3.5%
-    uint256 internal constant _genesisSupply = 1400000 * (10 ** uint256(decimals)); // 5%
-    uint256 internal constant _publicSupply = 4200000 * (10 ** uint256(decimals)); // 15%
+    uint256 internal constant _genesisSupply = 2800000 * (10 ** uint256(decimals)); // 10%
+    uint256 internal constant _publicSupply = 420000 * (10 ** uint256(decimals)); // 1.5%
     uint256 internal constant _treasurySupply = 3640000 * (10 ** uint256(decimals)); // 13%
     uint256 internal constant _airdropSupply = 420000 * (10 ** uint256(decimals)); // 1.5%
-    uint256 internal constant _ecosystemSupply = 14000000 * (10 ** uint256(decimals)); // 50%
+    uint256 internal constant _ecosystemSupply = 16380000 * (10 ** uint256(decimals)); // 58.5%
 
-    uint256 internal constant _genesisEthCapacity = 200e18; // 200 ETH
+    uint256 internal constant _genesisEthCapacity = 100e18; // 100 ETH
     uint256 internal _publicEthCapacity = 2000e18; // 2000 ETH
 
     uint256 private _totalSupply = 0;
