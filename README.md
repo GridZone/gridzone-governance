@@ -47,29 +47,29 @@ And you can deploy contracts and verify them individually.
 ### GridZone
 
 ```text
-npx hardhat deploy --network mainnet --tags ropsten_ZONE_deploy
-npx hardhat deploy --network mainnet --tags ropsten_ZONE_verify
+npx hardhat deploy --network mainnet --tags mainnet_ZONE_deploy
+npx hardhat deploy --network mainnet --tags mainnet_ZONE_verify
 ```
 
 ### Timelock
 
 ```text
-npx hardhat deploy --network mainnet --tags ropsten_Timelock_deploy
-npx hardhat deploy --network mainnet --tags ropsten_Timelock_verify
+npx hardhat deploy --network mainnet --tags mainnet_Timelock_deploy
+npx hardhat deploy --network mainnet --tags mainnet_Timelock_verify
 ```
 
 ### Governor Alpha
 
 ```text
-npx hardhat deploy --network mainnet --tags ropsten_GovernorAlpha_deploy
-npx hardhat deploy --network mainnet --tags ropsten_GovernorAlpha_verify
+npx hardhat deploy --network mainnet --tags mainnet_GovernorAlpha_deploy
+npx hardhat deploy --network mainnet --tags mainnet_GovernorAlpha_verify
 ```
 
 ### VoteBox
 
 ```text
-npx hardhat deploy --network mainnet --tags ropsten_VoteBox_deploy
-npx hardhat deploy --network mainnet --tags ropsten_VoteBox_verify
+npx hardhat deploy --network mainnet --tags mainnet_VoteBox_deploy
+npx hardhat deploy --network mainnet --tags mainnet_VoteBox_verify
 ```
 
 ## Print out deployed contracts
