@@ -1,10 +1,10 @@
 module.exports = {
   mainnet: {
     ZONE: {
-      ownerAddress: "0xa6052fDc72332408D9fbFDB2226b5bBdEb24FaC3",
-      vaultAddress: "0xE136B97a1def10F2b23aE078932E57e07d77B914",
-      advisorsAddress: "0x0c33655Ee1cdB297BE354De317d4bFd07A376619",
-      treasuryAddress: "0x5b12180C56eF949a73254C895fC61431882f8f04",
+      ownerAddress: "0xab0B18523e8fe8CBF947C55632e8aB5Ce936ae8c",
+      vaultAddress: "0x7205731e9643235Aa313D46552c7aa81E559fB6F",
+      advisorsAddress: "0x2e229B4172a7157ea0db8caa0cA580636A05dce3",
+      treasuryAddress: "0x0C1Ac3eDE7A6a22CF36457BD3759BceA44b0B643",
     },
     Timelock: {
       delay: 172800, // 2 days
