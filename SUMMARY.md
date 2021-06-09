@@ -12,7 +12,6 @@
   * [Interactive 3D NFT art](about-gridzone/interactive-3d-nft-art.md)
   * [GridZone.io \(ZONE\) Token](about-gridzone/gridzone.io-zone-token.md)
   * [GridZone Governance](about-gridzone/gridzone-governance.md)
-  * [Tokenomics](about-gridzone/tokenomics/README.md)
-    * [Genesis Sale](about-gridzone/tokenomics/genesis-sale.md)
+  * [Tokenomics](about-gridzone/tokenomics.md)
   * [Roadmap](about-gridzone/roadmap.md)
 
