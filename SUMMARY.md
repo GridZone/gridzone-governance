@@ -1,6 +1,7 @@
 # Table of contents
 
 * [GridZone](README.md)
+* [User Manual](user-manual.md)
 * [About GridZone](about-gridzone/README.md)
   * [What is GridZone?](about-gridzone/what-is-gridzone.md)
   * [GridZone DAO](about-gridzone/gridzone-dao.md)
