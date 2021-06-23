@@ -23,4 +23,5 @@
     * [Airdrop](about-gridzone/tokenomics/airdrop.md)
   * [Roadmap](about-gridzone/roadmap.md)
 * [User Manual](user-manual.md)
+* [Links](links.md)
 
