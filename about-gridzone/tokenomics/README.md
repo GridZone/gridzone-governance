@@ -1,3 +1,7 @@
+---
+description: Total supply is 28 million ZONE tokens
+---
+
 # Tokenomics
 
 ## Tokenomics
