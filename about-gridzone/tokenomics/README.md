@@ -10,12 +10,6 @@ description: Total supply is 28 million ZONE tokens
 
 **4** months cliff starts on **Genesis sale TGE**. 
 
-The minimum purchase amount is **0.1ETH**.
-
-**10%** bonus on purchased amount; extra **10%** bonus on **10 ETH** or more spent.
-
-For each **0.1 ETH** spent, the buyer will receive **1 NFT credit** that can be redeemed for exclusive interactive **3D NFTs** on **GridZone** marketplace.
-
 * **Public Sale--Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
 
  Public sale starts 3 months after **Genesis sale TGE**. 
