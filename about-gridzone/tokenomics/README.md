@@ -18,17 +18,17 @@ description: Total supply is 28 million ZONE tokens
 
 Vested monthly over a period of **24** months. 
 
-Vesting starts on **Genesis sale TGE**. 
+Vesting starts on **Genesis funraise TGE**. 
 
 * **Advisors \( 3.5%, 0.98 million ZONE tokens\)** 
 
 Vested monthly over a period of **12** months. 
 
-Vesting starts on **Genesis sale TGE**. 
+Vesting starts on **Genesis fundraise TGE**. 
 
 * **Treasury \( 13%, 3.64 million ZONE tokens\)**
 
- Locked for **12** months after **Genesis sale TGE**. 
+ Locked for **12** months after **Genesis fundraise TGE**. 
 
 Cannot vote. 
 
