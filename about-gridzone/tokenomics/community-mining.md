@@ -11,7 +11,7 @@ description: 35% of total ZONE supply-- 9.8 million ZONE tokens
 * → Q2–**26.76%** of the respective halving emissions 
 * → Q3–**22.50%** of the respective halving emissions 
 * → Q4–**18.92%** of the respective halving emissions 
-* The first halving \(**50%**\) starts on **Genesis sale TGE**. 
+* The first halving \(**50%**\) starts on **Genesis TGE**. 
 
 
 
