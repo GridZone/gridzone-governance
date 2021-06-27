@@ -6,13 +6,13 @@ description: Total supply is 28 million ZONE tokens
 
 ## Tokenomics
 
-* **Genesis Sale--Community Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
+* **Genesis Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
 
-**4** months cliff starts on **Genesis sale TGE**. 
+**4** months cliff starts on **Genesis fundraise TGE**. 
 
-* **Public Sale--Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
+* **Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
 
- Public sale starts 3 months after **Genesis sale TGE**. 
+ Public crowdfunding starts 3 months after **Genesis fundraise TGE**. 
 
 * **Team \( 12%, 3.36 million ZONE tokens\)** 
 
