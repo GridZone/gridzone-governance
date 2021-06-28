@@ -145,8 +145,8 @@ Follows the same halving principle and schedule as **community mining** token al
 * **Q3-2021**
 * [ ] **Community building** 
 * [ ] **GridZone BOTs**
-* [ ]  - Staking BOT
-* [ ]  - Airdrop BOT 
+* [ ]  - Staking bot 
+* [ ]  - Airdrop bot 
 * [ ]  - NFT minting BOT
 * [ ] **NFT MarketPlace Stage 1**
 * [ ]  - NFT minting
