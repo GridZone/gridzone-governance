@@ -3,7 +3,7 @@
 ## Roadmap
 
 * **Q2-2021**
-* [ ] **Community building**
+* [x] **Community building**
 * [x] **ZONE token genesis sale**
 
 \*\*\*\*
@@ -11,8 +11,8 @@
 * **Q3-2021**
 * [ ] **Community building** 
 * [ ] **GridZone BOTs**
-* [ ]  - Staking bot 
-* [ ]  - Airdrop bot 
+* [ ]  - Staking BOT 
+* [ ]  - Airdrop BOT 
 * [ ]  - NFT minting BOT
 * [ ] **NFT MarketPlace Stage 1**
 * [ ]  - NFT minting
