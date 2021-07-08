@@ -7,7 +7,7 @@
 * Telegram Announcement Channel: [https://t.me/GridZone](https://t.me/GridZone)
 * Medium: [https://gridzone.medium.com](https://gridzone.medium.com/)
 * Gitbook: [https://gridzone.gitbook.io/gridzone/](https://gridzone.gitbook.io/gridzone/)
-* Email address: support@gridzone.io hello@gridzone.io, bryptobelz@gridzone.io, kappala@gridzone.io
+* Email address: support@gridzone.io, bryptobelz@gridzone.io, kappala@gridzone.io
 
 
 
