@@ -50,7 +50,7 @@ Depending on the type, **BOT** can perform different tasks ranging from staking 
 
 ## Interactive 3D NFT art
 
-As part of **GridZone** culture. **NFT ART** is an expression of **NYM's** creative skills and imagination presented through a series of authentic and distinguishable collectible digital assets that can be minted and auctioned on the **GridZOne NFT Marketplace**.
+As part of **GridZone** culture. **NFT ART** is an expression of **NYM's** creative skills and imagination presented through a series of authentic and distinguishable collectible digital assets that can be minted and auctioned on the **GridZone NFT Marketplace**.
 
 **GridZone** is exclusive to a selection of interactive **3D NFT** collectibles. This special type of **3D NFT ART** allows real-time interaction and exploration of aesthetic creations in their **3D** visual form.
 
@@ -58,7 +58,7 @@ Once acquired, **NFT ART** provides **NYM** with various benefits throughout the
 
 ## GridZone.io \(ZONE\) Token
 
-**GridZOne.io \(ZONE\) Governance token**, a utility token, empowered its owners with the ability to govern the **GridZone** platform. Not only does it enable them to propose and vote on the direction of the organization but also allows them to have a voice on how **GridZone** spends its resources. This way **ZONE** token holders have total control over **GridZone** assets, distribution of profits, and future developments.
+**GridZone.io \(ZONE\) Governance token**, a utility token, empowered its owners with the ability to govern the **GridZone** platform. Not only does it enable them to propose and vote on the direction of the organization but also allows them to have a voice on how **GridZone** spends its resources. This way **ZONE** token holders have total control over **GridZone** assets, distribution of profits, and future developments.
 
 ## GridZone Governance
 
