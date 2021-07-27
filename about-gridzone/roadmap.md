@@ -17,15 +17,15 @@
 * [ ] **NFT MarketPlace Stage 1**
 * [ ]  - NFT minting
 * [ ]  - Interactive 3D NFTs
+* [ ] **ZONE token public sale**
 
-
+\*\*\*\*
 
 * **Q4-2021**
 * [ ] **Community building**
 * [x] **GridZone -Discord Bridge**
 * [ ] **DAO 2 DAO**
 * [ ]  - DAO partnerships and collaborations 
-* [ ] **ZONE token public sale** 
 * [ ] **NYM NFT** 
 * [ ] **Transition into NYMs** 
 * [ ] **Dex exchange listing/partnerships** 
