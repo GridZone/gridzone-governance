@@ -22,7 +22,7 @@
 
 * **Q4-2021**
 * [ ] **Community building**
-* [ ] **GridZone -Discord Bridge**
+* [x] **GridZone -Discord Bridge**
 * [ ] **DAO 2 DAO**
 * [ ]  - DAO partnerships and collaborations 
 * [ ] **ZONE token public sale** 
