@@ -76,27 +76,27 @@ At least **4%** \(**1,120,000**\) of votes in support of a proposal is required 
 
 * **Genesis Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
 
-**4** months cliff starts on **Genesis Fundraise TGE**. 
+**4** months cliff starts on **Genesis TGE**. 
 
 * **Public Sale \(1.5%, 0.42 million ZONE tokens\)**
 
- Public sale starts 3 months after **Genesis Fundraise TGE**. 
+ Public sale starts 3 months after **Genesis TGE**. 
 
 * **Team \( 12%, 3.36 million ZONE tokens\)** 
 
 Vested monthly over a period of **24** months. 
 
-Vesting starts on **Genesis Fundraise TGE**. 
+Vesting starts on **Genesis TGE**. 
 
 * **Advisors \( 3.5%, 0.98 million ZONE tokens\)** 
 
 Vested monthly over a period of **12** months. 
 
-Vesting starts on **Genesis Fundraise TGE**. 
+Vesting starts on **Genesis TGE**. 
 
 * **Treasury \( 13%, 3.64 million ZONE tokens\)**
 
- Locked for **12** months after **Genesis Fundraise TGE**. 
+ Locked for **12** months after **Genesis TGE**. 
 
 Cannot vote. 
 
@@ -114,7 +114,7 @@ Each halving amount released in **4 quarterly** non-linear emissions.
 
 → Q4–**18.92%** of the respective halving emissions 
 
-The first halving \(**50%**\) starts on **Genesis Fundraise TGE**. 
+The first halving \(**50%**\) starts on **Genesis TGE**. 
 
 * **Liquidity mining \( 23.5%, 6.58 million ZONE tokens\)** 
 
