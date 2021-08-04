@@ -138,7 +138,7 @@ Follows the same halving principle and schedule as **community mining** token al
 
 * **Q2-2021**
 * [x] **Community building**
-* [x] **ZONE token genesis sale**
+* [x] **ZONE token genesis fundraise**
 
 \*\*\*\*
 
