@@ -74,7 +74,7 @@ At least **4%** \(**1,120,000**\) of votes in support of a proposal is required 
 
 ## Tokenomics
 
-* **Genesis Sale--Community Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
+* **Genesis Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
 
 **4** months cliff starts on **Genesis sale TGE**. 
 
@@ -84,7 +84,7 @@ The minimum purchase amount is **0.1ETH**.
 
 For each **0.1 ETH** spent, the buyer will receive **1 NFT credit** that can be redeemed for exclusive interactive **3D NFTs** on **GridZone** marketplace.
 
-* **Public Sale--Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
+* **Public Sale \(1.5%, 0.42 million ZONE tokens\)**
 
  Public sale starts 3 months after **Genesis sale TGE**. 
 
