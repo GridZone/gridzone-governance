@@ -145,15 +145,15 @@ Follows the same halving principle and schedule as **community mining** token al
 * [ ] **NFT MarketPlace Stage 1**
 * [ ]  - NFT minting
 * [ ]  - Interactive 3D NFTs
+* [ ] **Zone token Public Sale**
 
-
+\*\*\*\*
 
 * **Q4-2021**
 * [ ] **Community building**
 * [ ] **GridZone -Discord Bridge**
 * [ ] **DAO 2 DAO**
 * [ ]  - DAO partnerships and collaborations 
-* [ ] **ZONE token public sale** 
 * [ ] **NYM NFT** 
 * [ ] **Transition into NYMs** 
 * [ ] **Dex exchange listing/partnerships** 
