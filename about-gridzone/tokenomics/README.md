@@ -10,7 +10,7 @@ description: Total supply is 28 million ZONE tokens
 
 **4** months cliff starts on **Genesis TGE**. 
 
-* **Public Sale \(1.5%, 0.42 million ZONE tokens\)**
+* **Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
 
  Public crowdfunding starts 3 months after **Genesis TGE**. 
 

@@ -76,33 +76,27 @@ At least **4%** \(**1,120,000**\) of votes in support of a proposal is required 
 
 * **Genesis Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
 
-**4** months cliff starts on **Genesis sale TGE**. 
-
-The minimum purchase amount is **0.1ETH**.
-
-**10%** bonus on purchased amount; extra **10%** bonus on **10 ETH** or more spent.
-
-For each **0.1 ETH** spent, the buyer will receive **1 NFT credit** that can be redeemed for exclusive interactive **3D NFTs** on **GridZone** marketplace.
+**4** months cliff starts on **Genesis Fundraise TGE**. 
 
 * **Public Sale \(1.5%, 0.42 million ZONE tokens\)**
 
- Public sale starts 3 months after **Genesis sale TGE**. 
+ Public sale starts 3 months after **Genesis Fundraise TGE**. 
 
 * **Team \( 12%, 3.36 million ZONE tokens\)** 
 
 Vested monthly over a period of **24** months. 
 
-Vesting starts on **Genesis sale TGE**. 
+Vesting starts on **Genesis Fundraise TGE**. 
 
 * **Advisors \( 3.5%, 0.98 million ZONE tokens\)** 
 
 Vested monthly over a period of **12** months. 
 
-Vesting starts on **Genesis sale TGE**. 
+Vesting starts on **Genesis Fundraise TGE**. 
 
 * **Treasury \( 13%, 3.64 million ZONE tokens\)**
 
- Locked for **12** months after **Genesis sale TGE**. 
+ Locked for **12** months after **Genesis Fundraise TGE**. 
 
 Cannot vote. 
 
@@ -120,7 +114,7 @@ Each halving amount released in **4 quarterly** non-linear emissions.
 
 → Q4–**18.92%** of the respective halving emissions 
 
-The first halving \(**50%**\) starts on **Genesis sale TGE**. 
+The first halving \(**50%**\) starts on **Genesis Fundraise TGE**. 
 
 * **Liquidity mining \( 23.5%, 6.58 million ZONE tokens\)** 
 
