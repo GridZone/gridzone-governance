@@ -78,7 +78,7 @@ At least **4%** \(**1,120,000**\) of votes in support of a proposal is required 
 
 **4** months cliff starts on **Genesis TGE**. 
 
-* **Public Sale \(1.5%, 0.42 million ZONE tokens\)---- Starts on 31.08.2021**
+* **Public Sale \(1.5%, 0.42 million ZONE tokens\)**
 
  Public sale starts 3 months after **Genesis TGE**. 
 
