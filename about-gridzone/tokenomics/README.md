@@ -10,7 +10,7 @@ description: Total supply is 28 million ZONE tokens
 
 **4** months cliff starts on **Genesis TGE**. 
 
-* **Public Sale \(5%, 1.4 million ZONE tokens\)----Starts on 31.08.2021**
+* **Public Crowdfunding \(1.5%, 0.42 million ZONE tokens\)**
 
  Public crowdfunding starts 3 months after **Genesis TGE**. 
 
@@ -32,7 +32,7 @@ Vesting starts on **Genesis TGE**.
 
 Cannot vote. 
 
-* **Community mining \( 30%, 8.4 million ZONE tokens\)** 
+* **Community mining \( 35%, 9.8 million ZONE tokens\)** 
 
 Progressively unlocked on halving schedule with **1 year** periods:**50%**, **25%**, **12.5%** ,**6.25%**, **3.125%**, etc. 
 
@@ -48,7 +48,7 @@ Each halving amount released in **4 quarterly** non-linear emissions.
 
 The first halving \(**50%**\) starts on **Genesis TGE**. 
 
-* **Liquidity mining \( 25%, 7 million ZONE tokens\)** 
+* **Liquidity mining \( 23.5%, 6.58 million ZONE tokens\)** 
 
 Follows the same halving principle and schedule as **community mining** token allocation. 
 
