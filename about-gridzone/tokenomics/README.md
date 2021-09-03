@@ -12,7 +12,7 @@ description: Total supply is 28 million ZONE tokens
 
 * **Public Sale \(5%, 1.4 million ZONE tokens\)----Sold out**
 
- Public crowdfunding starts 3 months after **Genesis TGE**. 
+ Public sale starts 3 months after **Genesis TGE**. 
 
 * **Team \( 12%, 3.36 million ZONE tokens\)** 
 
