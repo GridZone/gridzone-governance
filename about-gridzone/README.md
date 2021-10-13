@@ -8,7 +8,7 @@
 
 ## GridZone DAO
 
-**GridZone DAO** is a next-gen art-focused decentralized autonomous organization**\(DAO\)** with **gamified social experience**, unique **digital identities**, and **interactive 3D NFT art** on Ethereum.
+**GridZone DAO** is a next-gen art-focused decentralized autonomous organization**(DAO)** with **gamified social experience**, unique **digital identities**, and **interactive 3D NFT art** on Ethereum.
 
 **GridZone DAO** is governed by a collection of people authorized to act as a single economic entity where everything has strict rules defined by programming code that is **transparent**, controlled by the organization members, and not influenced by a central government. At its core, **GridZone** is a place where every social interaction is smart contract interaction.
 
@@ -18,9 +18,9 @@ This **autonomous** behavior is independent of its creator and cannot be censore
 
 ## NYM
 
-On **GridZone**, each identity is represented by a **NYM** "pronounced NIHM and is a shortened form of 'pseudonym' ". **NYMs** are **digital DNA**, a self-representation of a reputable person or establishment in the interactive and collaborative next-gen community. Every **NYM** is a non-fungible token\(**NFT**\), a true transformation into a binary world with its own unique **digital DNA**, stored on the **Ethereum** blockchain.
+On **GridZone**, each identity is represented by a **NYM** "pronounced NIHM and is a shortened form of 'pseudonym' ". **NYMs** are **digital DNA**, a self-representation of a reputable person or establishment in the interactive and collaborative next-gen community. Every **NYM** is a non-fungible token(**NFT**), a true transformation into a binary world with its own unique **digital DNA**, stored on the **Ethereum** blockchain.
 
-**NYM NFTs** offer the user complete ownership of their digital identities which cannot be duplicated nor reproduced. **NYM's** digital identity verification is confirmed through the user's Ethereum wallet by creating a cryptographic signature that authenticates and proves ownership of the **NYM** digital asset.
+**NYM NFTs **offer the user complete ownership of their digital identities which cannot be duplicated nor reproduced. **NYM's** digital identity verification is confirmed through the user's Ethereum wallet by creating a cryptographic signature that authenticates and proves ownership of the **NYM** digital asset.
 
 ## Nym HUD
 
@@ -32,7 +32,7 @@ On **GridZone**, **NYMs** can connect, build, and join communities or establish 
 
 "**NymPay**", a non-custodial payment service, enables direct transfer of digital assets between **NYMs** through their **Ethereum** wallets for transfer of funds.
 
-To fully utilize all features throughout **GridZone** every **NYM's** interaction with smart contracts\(such as signup and login processes, **NFT** minting and auctioning, staking, or transfers of funds\), requires **Ethereum** hardware or software wallet connected to GridZone through **Metamask**, **WalletConnect**, or **Coinbase WalletLink** protocols.
+To fully utilize all features throughout **GridZone** every **NYM's** interaction with smart contracts(such as signup and login processes, **NFT** minting and auctioning, staking, or transfers of funds), requires **Ethereum** hardware or software wallet connected to GridZone through **Metamask**, **WalletConnect**, or **Coinbase WalletLink** protocols.
 
 ## NymChat
 
@@ -52,55 +52,55 @@ Depending on the type, **BOT** can perform different tasks ranging from staking 
 
 As part of **GridZone** culture. **NFT ART** is an expression of **NYM's** creative skills and imagination presented through a series of authentic and distinguishable collectible digital assets that can be minted and auctioned on the **GridZone NFT Marketplace**.
 
-**GridZone** is exclusive to a selection of interactive **3D NFT** collectibles. This special type of **3D NFT ART** allows real-time interaction and exploration of aesthetic creations in their **3D** visual form.
+**GridZone** is exclusive to a selection of interactive** 3D NFT** collectibles. This special type of **3D NFT ART** allows real-time interaction and exploration of aesthetic creations in their **3D** visual form.
 
 Once acquired, **NFT ART** provides **NYM** with various benefits throughout the **GridZone**.
 
-## GridZone.io \(ZONE\) Token
+## GridZone.io (ZONE) Token
 
-**GridZone.io \(ZONE\) Governance token**, a utility token, empowered its owners with the ability to govern the **GridZone** platform. Not only does it enable them to propose and vote on the direction of the organization but also allows them to have a voice on how **GridZone** spends its resources. This way **ZONE** token holders have total control over **GridZone** assets, distribution of profits, and future developments.
+**GridZone.io (ZONE) Governance token**, a utility token, empowered its owners with the ability to govern the **GridZone** platform. Not only does it enable them to propose and vote on the direction of the organization but also allows them to have a voice on how **GridZone** spends its resources. This way **ZONE** token holders have total control over **GridZone** assets, distribution of profits, and future developments.
 
 ## GridZone Governance
 
-**GridZone** platform is governed and upgraded by the community of **GridZone.io** \(**ZONE**\) token holders using three components; the **ZONE** token, **Governor Alpha**, and **Timelock** contracts. Together, these contracts allow the **GridZone** community to propose, vote, and implement changes throughout the platform.
+**GridZone** platform is governed and upgraded by the community of **GridZone.io** (**ZONE**) token holders using three components; the **ZONE** token, **Governor Alpha**, and **Timelock** contracts. Together, these contracts allow the **GridZone** community to propose, vote, and implement changes throughout the platform.
 
 **ZONE** token holders are able to make proposals for any platform changes, vote directly, or delegate their votes to representatives who vote on their behalf. In this way, ZONE token holders have total control over voting rights, **GridZone** assets, distribution of resources, and future developments.
 
-Any address with at least **0.1%** \(**28,000**\) of ZONE tokens delegated to it may propose governance actions. When a proposal is created, the community of **ZONE** holders can submit their votes during a 3-day voting period.
+Any address with at least **0.1%** (**28,000**) of ZONE tokens delegated to it may propose governance actions. When a proposal is created, the community of **ZONE** holders can submit their votes during a 3-day voting period.
 
 In addition to **direct voting** which allows users to vote on proposals directly from their wallet, **GridZone** voting mechanism also utilizes a **delegated voting** feature that allows users to delegate their votes to others, making the **GridZone** platform more of a representative democracy.
 
-At least **4%** \(**1,120,000**\) of votes in support of a proposal is required in order for a quorum to be reached and for a vote to succeed. If voting is successful, the proposal is queued in **Timelock**, and can be implemented after **2 days**.
+At least **4%** (**1,120,000**) of votes in support of a proposal is required in order for a quorum to be reached and for a vote to succeed. If voting is successful, the proposal is queued in **Timelock**, and can be implemented after **2 days**.
 
 ## Tokenomics
 
-* **Genesis Fundraise \( 10%, 2.8 million ZONE tokens\).----SOLD OUT**
+* **Genesis Fundraise ( 10%, 2.8 million ZONE tokens).----SOLD OUT**
 
 **4** months cliff starts on **Genesis TGE**. 
 
-* **Public Sale \(5%, 1.4 million ZONE tokens\)---- Starts on 31.08.2021**
+* **Public Sale (5%, 1.4 million ZONE tokens)---- Starts on 31.08.2021**
 
  Public sale starts 3 months after **Genesis TGE**. 
 
-* **Team \( 12%, 3.36 million ZONE tokens\)** 
+* **Team ( 12%, 3.36 million ZONE tokens) **
 
-Vested monthly over a period of **24** months. 
-
-Vesting starts on **Genesis TGE**. 
-
-* **Advisors \( 3.5%, 0.98 million ZONE tokens\)** 
-
-Vested monthly over a period of **12** months. 
+Vested monthly over a period of **24 **months. 
 
 Vesting starts on **Genesis TGE**. 
 
-* **Treasury \( 13%, 3.64 million ZONE tokens\)**
+* **Advisors ( 3.5%, 0.98 million ZONE tokens) **
 
- Locked for **12** months after **Genesis TGE**. 
+Vested monthly over a period of **12 **months. 
+
+Vesting starts on **Genesis TGE**. 
+
+* **Treasury ( 13%, 3.64 million ZONE tokens)**
+
+ Locked for **12 **months after **Genesis TGE**. 
 
 Cannot vote. 
 
-* **Community mining \( 30%, 8.4 million ZONE tokens\)** 
+* **Community mining ( 30%, 8.4 million ZONE tokens) **
 
 Progressively unlocked on halving schedule with **1 year** periods:**50%**, **25%**, **12.5%** ,**6.25%**, **3.125%**, etc. 
 
@@ -114,13 +114,13 @@ Each halving amount released in **4 quarterly** non-linear emissions.
 
 → Q4–**18.92%** of the respective halving emissions 
 
-The first halving \(**50%**\) starts on **Genesis TGE**. 
+The first halving (**50%**) starts on **Genesis TGE**. 
 
-* **Liquidity mining \( 25%, 7 million ZONE tokens\)** 
+* **Liquidity mining ( 25%, 7 million ZONE tokens) **
 
 Follows the same halving principle and schedule as **community mining** token allocation. 
 
-* **Airdrop \( 1.5%, 0.42 million ZONE tokens\)** 
+* **Airdrop ( 1.5%, 0.42 million ZONE tokens) **
 
 **0.5%** split between contributors/active users. 
 
@@ -130,47 +130,7 @@ Follows the same halving principle and schedule as **community mining** token al
 
 ## Roadmap
 
-* **Q2-2021**
-* [x] **Community building**
-* [x] **ZONE token genesis fundraise**
+![](../.gitbook/assets/GZ_ROADMAP.jpeg)
 
-\*\*\*\*
-
-* **Q3-2021**
-* [ ] **Community building** 
-* [ ] **GridZone BOTs**
-* [ ]  - Staking BOT
-* [ ]  - Airdrop BOT 
-* [ ]  - NFT minting BOT
-* [ ] **NFT MarketPlace Stage 1**
-* [ ]  - NFT minting
-* [ ]  - Interactive 3D NFTs
-* [ ] **Zone token Public Sale**
-
-\*\*\*\*
-
-* **Q4-2021**
-* [ ] **Community building**
-* [ ] **GridZone -Discord Bridge**
-* [ ] **DAO 2 DAO**
-* [ ]  - DAO partnerships and collaborations 
-* [ ] **NYM NFT** 
-* [ ] **Transition into NYMs** 
-* [ ] **Dex exchange listing/partnerships** 
-* [ ] **User account customization**
-* [ ]  - Interactive 3D NYMs
-* [ ]  - Advanced 3D Visual Customization
-* [ ] **NFT Marketplace Stage 2**
-* [ ]  - NFT creation
-* [ ]  - NFT Auctioning
-
-
-
-* **Q1- Q4 - 2022**
-* [ ] **3D interactive world**
-* [ ]  - VR engine
-* [ ]  - Settlement and expansion
-* [ ]  - A home-planet for NYMs and GZ NFT art
-
-
+****
 
