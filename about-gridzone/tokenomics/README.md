@@ -8,11 +8,11 @@ description: Total supply is 28 million ZONE tokens
 
 * **Genesis Fundraise ( 10%, 2.8 million ZONE tokens)---- All unlocked**
 
-****
+Finished on June 4, 2021
 
 * **Public Sale (5%, 1.4 million ZONE tokens)----All unlocked**
 
-
+Finished on Aug 31, 2021
 
 * **Team ( 12%, 3.36 million ZONE tokens) **
 
