@@ -76,11 +76,11 @@ At least **4%** (**1,120,000**) of votes in support of a proposal is required in
 
 * **Genesis Fundraise ( 10%, 2.8 million ZONE tokens)---- All unlocked**
 
-Finished on June 4, 2021
+****
 
 * **Public Sale (5%, 1.4 million ZONE tokens)----All unlocked**
 
-Finished on Aug 31, 2021
+
 
 * **Team ( 12%, 3.36 million ZONE tokens) **
 
@@ -125,8 +125,6 @@ Follows the same halving principle and schedule as **community mining** token al
 **0.5%** split between contributors/active users.&#x20;
 
 **1.0%** split between other users.
-
-
 
 
 
