@@ -6,13 +6,13 @@ description: Total supply is 28 million ZONE tokens
 
 ## Tokenomics
 
-* **Genesis Fundraise ( 10%, 2.8 million ZONE tokens)---- All unlocked**
+* **Genesis Sale ( 10%, 2.8 million ZONE tokens)-- All unlocked**
 
-****
+Finished on June 4, 2021
 
-* **Public Sale (5%, 1.4 million ZONE tokens)----All unlocked**
+* **Public Sale (5%, 1.4 million ZONE tokens)--All unlocked**
 
-
+Finished on Aug 31, 2021
 
 * **Team ( 12%, 3.36 million ZONE tokens) **
 
@@ -32,7 +32,7 @@ Vesting starts on **Genesis(June 03, 2021) TGE**.&#x20;
 
 Cannot vote.&#x20;
 
-* **Community mining ( 30%, 8.4 million ZONE tokens) **
+* **Community mining ( 30%, 8.4 million ZONE tokens) -- Play to earn rewards for GridZone Racing game**
 
 Progressively unlocked on halving schedule with **1 year** periods:**50%**, **25%**, **12.5%** ,**6.25%**, **3.125%**, etc.&#x20;
 

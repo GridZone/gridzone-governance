@@ -74,13 +74,13 @@ At least **4%** (**1,120,000**) of votes in support of a proposal is required in
 
 ## Tokenomics
 
-* **Genesis Fundraise ( 10%, 2.8 million ZONE tokens)---- All unlocked**
+* **Genesis Sale ( 10%, 2.8 million ZONE tokens)---- All unlocked**
 
-****
+Finished on June 4, 2021
 
 * **Public Sale (5%, 1.4 million ZONE tokens)----All unlocked**
 
-
+Finished on Aug 31, 2021
 
 * **Team ( 12%, 3.36 million ZONE tokens) **
 
@@ -100,7 +100,7 @@ Vesting starts on **Genesis(June 03, 2021) TGE**.&#x20;
 
 Cannot vote.&#x20;
 
-* **Community mining ( 30%, 8.4 million ZONE tokens) **
+* **Community mining ( 30%, 8.4 million ZONE tokens) -- Play to earn rewards for GridZone racing game**
 
 Progressively unlocked on halving schedule with **1 year** periods:**50%**, **25%**, **12.5%** ,**6.25%**, **3.125%**, etc.&#x20;
 
@@ -125,6 +125,8 @@ Follows the same halving principle and schedule as **community mining** token al
 **0.5%** split between contributors/active users.&#x20;
 
 **1.0%** split between other users.
+
+
 
 
 

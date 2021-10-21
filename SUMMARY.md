@@ -10,10 +10,10 @@
     * [NymChat](about-gridzone/nym/nymchat.md)
   * [GridZone BOT](about-gridzone/gridzone-bot.md)
   * [Interactive 3D NFT art](about-gridzone/interactive-3d-nft-art.md)
-  * [GridZone.io \(ZONE\) Token](about-gridzone/gridzone.io-zone-token.md)
+  * [GridZone.io (ZONE) Token](about-gridzone/gridzone.io-zone-token.md)
   * [GridZone Governance](about-gridzone/gridzone-governance.md)
   * [Tokenomics](about-gridzone/tokenomics/README.md)
-    * [Genesis-community crowdfunding](about-gridzone/tokenomics/genesis-sale-community-fundraise.md)
+    * [Genesis Sale](about-gridzone/tokenomics/genesis-sale-community-fundraise.md)
     * [Public Sale](about-gridzone/tokenomics/public-sale-public-crowdfunding.md)
     * [Team](about-gridzone/tokenomics/team.md)
     * [Advisors](about-gridzone/tokenomics/advisors.md)
@@ -24,4 +24,3 @@
   * [Roadmap](about-gridzone/roadmap.md)
 * [User Manual](user-manual.md)
 * [Links](links.md)
-
