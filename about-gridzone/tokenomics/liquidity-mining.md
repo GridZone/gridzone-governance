@@ -1,5 +1,5 @@
 ---
-description: 23.5% of total supply--6.58 million ZONE tokens
+description: Rewards for Liquidity Mining
 ---
 
 # Liquidity Mining

@@ -132,7 +132,5 @@ Follows the same halving principle and schedule as **community mining** token al
 
 ## Roadmap
 
-![](../.gitbook/assets/GZ\_ROADMAP.jpeg)
-
-****
+![](../.gitbook/assets/Roadmap\_-\_John\_final\_edits.png)
 
