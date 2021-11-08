@@ -12,5 +12,5 @@ In **GridZone Metaverse**, each identity is represented by a **NYM** "pronounced
 
 NYM NFT demo: [https://youtu.be/EYntEBs-nog](https://youtu.be/EYntEBs-nog)
 
-![](../../../.gitbook/assets/NYM-\_Skull\_Tee\_shirt.png)
+![](../../.gitbook/assets/NYM-\_Skull\_Tee\_shirt.png)
 
