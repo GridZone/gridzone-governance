@@ -1,6 +1,6 @@
 # About GridZone
 
-## [What is GridZone?](what-is-gridzone.md)
+## [What is GridZone Metaverse?](what-is-gridzone.md)
 
 ## [GridZone DAO](gridzone-dao.md)
 
@@ -10,9 +10,9 @@
 
 ## [GridZone BOT](gridzone-bot.md)
 
-## [Astro Cafe](gridzone-vr-club-astro-cafe.md)
+## [GridZone VR Club -- Astro Cafe](gridzone-vr-club-astro-cafe.md)
 
-## [Zone Racer](gridzone-vr-racing-game-zone-racer.md)
+## [GridZone VR Racing Game -- Zone Racer](gridzone-vr-racing-game-zone-racer.md)
 
 ## [Tokenomics](tokenomics/)
 
