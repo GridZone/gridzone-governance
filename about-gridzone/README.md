@@ -8,7 +8,7 @@
 
 ## [GridZone NFT](interactive-3d-nft-art.md)
 
-## [GridZone BOT](./#gridzone-bot)
+## [GridZone BOT](gridzone-bot.md)
 
 ## [Astro Cafe](gridzone-vr-club-astro-cafe.md)
 
