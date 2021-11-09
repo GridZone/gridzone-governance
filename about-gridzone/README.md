@@ -4,7 +4,7 @@
 
 ## [GridZone DAO](gridzone-dao.md)
 
-## [GridZone.io ($ZONE) Token](./#gridzone.io-usdzone-token)
+## [GridZone.io ($ZONE) Token](gridzone.io-zone-token.md)
 
 ## [GridZone NFT](interactive-3d-nft-art.md)
 
