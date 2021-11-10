@@ -1,7 +1,7 @@
 # Table of contents
 
 * [GridZone](README.md)
-* [Whitepaper](about-gridzone/README.md)
+* [GridZone Metaverse](about-gridzone/README.md)
   * [What is GridZone Metaverse?](about-gridzone/what-is-gridzone.md)
   * [GridZone DAO](about-gridzone/gridzone-dao.md)
     * [GridZone Governance](about-gridzone/gridzone-governance.md)
