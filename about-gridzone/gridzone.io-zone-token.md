@@ -1,3 +1,8 @@
+---
+cover: ../.gitbook/assets/截屏2021-11-10 22.39.57.png
+coverY: 0
+---
+
 # GridZone.io ($ZONE) Token
 
 ## GridZone.io ($ZONE) Token

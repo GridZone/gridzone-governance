@@ -1,3 +1,8 @@
+---
+cover: ../../.gitbook/assets/截屏2021-11-10 21.56.18.png
+coverY: 0
+---
+
 # NYM NFT
 
 ## NYM

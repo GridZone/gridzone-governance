@@ -1,3 +1,8 @@
+---
+cover: ../../.gitbook/assets/截屏2021-11-10 22.37.15.png
+coverY: 0
+---
+
 # Nym HUD
 
 ## Nym HUD

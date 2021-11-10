@@ -1,3 +1,8 @@
+---
+cover: ../.gitbook/assets/截屏2021-11-10 22.35.39.png
+coverY: 0
+---
+
 # GridZone DAO
 
 ## GridZone DAO

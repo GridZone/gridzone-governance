@@ -1,4 +1,9 @@
-# Astro Cafe
+---
+cover: ../.gitbook/assets/截屏2021-11-10 22.08.26.png
+coverY: 0
+---
+
+# GridZone VR Club -- Astro Cafe
 
 **Astro Cafe** is a part of the GridZone “Party Zone”, a 3D VR super club, a fresh new 3D virtual room concept where all **NYMs** can have a good time. It is a place with lights, music, DJs, **Party to Earn Rewards**, everything you need to have the best metaverse experience will be there. Events such as airdrops, meetups, parties, and DJ live performances will also take place in GridZone Astro Cafe.
 

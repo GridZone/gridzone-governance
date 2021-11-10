@@ -1,3 +1,8 @@
+---
+cover: ../.gitbook/assets/截屏2021-11-10 22.12.42.png
+coverY: 0
+---
+
 # GridZone VR Racing Game -- Zone Racer
 
 **Zone Racer** is GridZone’s VR racetrack **Play to Earn** gaming zone where players can use **GridZone NFT Rides** to race against other users or race against time, and earn various NFT and $ZONE rewards. Apart from visual appearance, each NFT ride has different abilities to suit the user (i.e. some are faster while some are easier to control, etc.).&#x20;

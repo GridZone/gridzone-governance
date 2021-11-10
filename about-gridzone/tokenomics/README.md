@@ -1,5 +1,7 @@
 ---
 description: Total supply is 28 million ZONE tokens
+cover: ../../.gitbook/assets/截屏2021-11-10 22.34.04.png
+coverY: 0
 ---
 
 # Tokenomics

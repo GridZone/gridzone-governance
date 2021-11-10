@@ -14,6 +14,4 @@ LP Staking details:
 * Minimum staking period is 180 days. If unstaked before 180 days, 100% penalty applies.
 * After 180 days of staking, based on the amount of ZONE reward, stakers can claim an equivalent NFT reward.
 
-Tutorial video:
-
-[https://youtu.be/eQTGGQ4ExYg](https://youtu.be/eQTGGQ4ExYg)
+LP Staking BOT Tutorial Video: [https://youtu.be/eQTGGQ4ExYg](https://youtu.be/eQTGGQ4ExYg)
