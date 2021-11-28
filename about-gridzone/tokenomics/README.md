@@ -40,7 +40,7 @@ Vesting starts on **Genesis(June 03, 2021) TGE**.&#x20;
 
 Cannot vote.&#x20;
 
-* **Community mining ( 30%, 8.4 million ZONE tokens) -- Play to earn rewards for GridZone Racing game**
+* **Community mining ( 30%, 8.4 million ZONE tokens) -- Staking, Play To Earn and Party To Earn Rewards**
 
 **Ecosystem Wallet : **[0x7205731e9643235Aa313D46552c7aa81E559fB6F](https://etherscan.io/token/0xc1d9b5a0776d7c8b98b8a838e5a0dd1bc5fdd53c?a=0x7205731e9643235aa313d46552c7aa81e559fb6f)
 

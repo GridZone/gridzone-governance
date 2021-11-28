@@ -1,5 +1,5 @@
 ---
-description: Play to earn rewards for GridZone Racing game.
+description: Staking, Play To Earn and Party To Earn Rewards
 ---
 
 # Community Mining
