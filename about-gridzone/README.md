@@ -1,4 +1,4 @@
-# About GridZone
+# GridZone Metaverse
 
 ## [What is GridZone Metaverse?](what-is-gridzone.md)
 
@@ -15,6 +15,8 @@
 ## [GridZone VR Racing Game -- Zone Racer](gridzone-vr-racing-game-zone-racer.md)
 
 ## [Tokenomics](tokenomics/)
+
+## [Roadmap](roadmap.md)
 
 ## [FAQ](../faq.md)
 
