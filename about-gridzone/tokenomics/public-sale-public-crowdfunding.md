@@ -1,5 +1,5 @@
 # Public Sale
 
-* **5%** of total **ZONE** supply(1.4** million ZONE tokens**) available for purchase
+* **5%** of total **ZONE** supply(1.4 **million ZONE tokens**) available for purchase
 * sale starts 3 months after **Genesis TGE---- on Aug 31, 2021**
 * **Public finished on Aug 31, 2021. All tokens from public sale unlocked on Aug 31, 2021**

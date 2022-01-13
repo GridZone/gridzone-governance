@@ -1,7 +1,6 @@
 # Table of contents
 
-* [GridZone](README.md)
-* [GridZone Metaverse](about-gridzone/README.md)
+* [GridZone Metaverse](README.md)
   * [What is GridZone Metaverse?](about-gridzone/what-is-gridzone.md)
   * [GridZone DAO](about-gridzone/gridzone-dao.md)
     * [GridZone Governance](about-gridzone/gridzone-governance.md)
@@ -29,5 +28,6 @@
     * [Liquidity Mining](about-gridzone/tokenomics/liquidity-mining.md)
     * [Airdrop](about-gridzone/tokenomics/airdrop.md)
   * [Roadmap](about-gridzone/roadmap.md)
+* [GZ Github](<README (1).md>)
 * [FAQ](faq.md)
 * [Links](links.md)

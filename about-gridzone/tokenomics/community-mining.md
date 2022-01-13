@@ -12,7 +12,7 @@ description: Staking, Play To Earn and Party To Earn Rewards
 * → Q3–**22.50%** of the respective halving emissions&#x20;
 * → Q4–**18.92%** of the respective halving emissions&#x20;
 * The first halving (**50%**) starts on **Genesis TGE**.&#x20;
-*   **Ecosystem Wallet : **[0x7205731e9643235Aa313D46552c7aa81E559fB6F](https://etherscan.io/token/0xc1d9b5a0776d7c8b98b8a838e5a0dd1bc5fdd53c?a=0x7205731e9643235aa313d46552c7aa81e559fb6f)
+*   **Ecosystem Wallet :** [0x7205731e9643235Aa313D46552c7aa81E559fB6F](https://etherscan.io/token/0xc1d9b5a0776d7c8b98b8a838e5a0dd1bc5fdd53c?a=0x7205731e9643235aa313d46552c7aa81e559fb6f)
 
 
 
