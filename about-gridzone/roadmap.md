@@ -1,3 +1,3 @@
 # Roadmap
 
-![](../.gitbook/assets/image0.jpeg)
+![](../.gitbook/assets/RoadmapV2.jpeg)
